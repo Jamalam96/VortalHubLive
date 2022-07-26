@@ -1,0 +1,1031 @@
+body{
+  overflow: hidden;
+  font-family: 'Ubuntu', sans-serif;
+}
+/* Current Month Title */
+.currentMonth{
+text-align: center;
+color: #3F72AF;
+font-size: 3rem;
+}
+/* END */
+
+/* Calendar Header Box */
+  .title{
+  text-align:  center;
+  }
+  .todayClick:hover{
+  color: #3F72AF
+  }
+  .fa-chevron-left,.fa-chevron-right{
+  font-size: 80px;
+  }
+  .fa-chevron-left:hover,.fa-chevron-right:hover, .title:hover{
+  cursor: pointer;
+  }
+  /* Left and Right Arrow Divs */
+  .dateToggle{
+    text-align: center;
+    color: #3F72AF;
+  }
+  /* END */
+  .diaryBody{
+    padding: 0;
+  }
+
+  .closeButton{
+    position: absolute;
+    right: 1rem;
+    border-radius: 5px 5px 0;
+    z-index: -1;
+    padding: 10px;
+    padding-top: 0;
+    color: #3F72AF;
+    font-size: 3rem;
+    top: -4rem;
+    background-color: white
+  }
+/* Calendar */
+  .grid, .gridheaders{
+    color: #3F72AF;
+  display: grid;
+  width: 100vw;
+  grid-template-columns: repeat(7, 1fr);
+  }
+
+
+    /* Calendar  Cells */
+    .gridheaders{
+      position: sticky;
+      top: 0
+    }
+    .itemHeader, .item{
+    font-size: 1rem;
+    border: solid;
+    border-width: 1px;
+    border-color: #325a8a;
+    text-align: center;
+
+    }
+    .item{
+    position: relative;
+    padding-top: 15px;
+    list-style-type: none;
+    height: 16vh;
+    }
+    .monthBefore{
+      color: lightgrey;
+      background-color: rgba(137, 138, 138, 0.2);
+    }
+    .dayBorder{
+      height: 100%;
+      width: 100%;
+      position:absolute;
+      left: 0;
+      top: 0;
+      overflow: visible;
+      border: solid 0.5px #325a8a;
+    }
+
+    .todaySelected{
+      border:solid 4px red;
+      background-color: #F9F9C5;
+      z-index: -10
+
+    }
+
+    /* END */
+
+
+        /* Calendar Items */
+          .diaryItems, .firstItem, .spare{
+            width: 98%;
+            float: left;
+            position: relative;
+            text-align: left;
+            font-size: 1.1rem;
+            background-color: lightBlue;
+            border-color: #92A9BD;
+            border-radius: 5px;
+            margin: 8px;
+            margin-bottom:0;
+            padding-left: 4px;
+              }
+            .spare, .sparePM{
+            opacity: 0%;
+            }
+            /* END */
+
+          /* Width Selection */
+          .widthAM, .widthPM, .sparePM{
+            width: 50%;
+            float: left;
+          }
+
+          .widthPM{
+            text-align: right;
+          }
+
+          .widthAM{
+            text-align: left;
+          }
+          .widthx2{
+          width: 200%;
+          text-align: left;
+          }
+          .widthx3{
+          width:300%;
+          text-align: left;
+          }
+          .widthx4{
+          width: 400%;
+          text-align: left;
+          }
+          .widthx5{
+          width:500%;
+          text-align: left;
+          }
+          .widthx6{
+          width: 600%;
+          text-align: left;
+          }
+          .widthx7{
+          width:700%;
+          text-align: left;
+          }
+          /* END */
+/* END */
+/* Calendar Date */
+.dateNo{
+  position: absolute;
+  text-align: center;
+  width: 20px;
+  height: 20px;
+  top: 2px;
+  right: 2px;
+  font-size: 12px;
+  z-index: 6
+}
+/* END */
+.dateSelection{
+  padding: 1rem;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  flex-basis: auto;
+  width: 100%;
+  box-shadow: 0px -3px 12px 3px rgba(158,158,158,0.61);
+  background-color: white;
+}
+.dateToggle{
+  flex-grow: 1;
+    font-size: 80px;
+}
+
+.title{
+  font-size: 2rem;
+  flex-grow: 80%
+}
+
+.menuSlide{
+  text-align: center;
+  list-style: none;
+  position: absolute;
+  padding: 0.5rem;
+  background-color: #7BB1E3;
+  color: white;
+  width: 24rem;
+  bottom: -20rem;
+  right: 5px;
+  z-index: 0;
+  font-size: 3rem;
+  border-radius: 10px 10px 0 0;
+  padding-bottom:1rem
+}
+
+.menuSlide>li{
+  padding: 1rem;
+  background-color: lightBlue;
+  border-top: 1px solid #7BB1E3;
+  border-bottom: 1px solid #7BB1E3;
+}
+
+.mobileFooter{
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  background-color: white;
+}
+/* To see my items Div */
+.overlayBox{
+  position: absolute;
+  width: 300px;
+  height: auto;
+  background-color: red;
+  padding-top: 20px;
+  list-style-type: none;
+  overflow: hidden;
+  box-shadow: 5px 5px 5px #aaaaaa;
+}
+/* END */
+/* Vortal Logo */
+.vortalLogo{
+ height: 3rem;
+}
+
+
+/* END */
+.bodyMain{
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  overflow-x: auto;
+}
+
+
+.stepsHeader{
+  position: relative;
+  background-color: #7BB1E3;
+  color: white;
+  border-radius: 7px;
+  padding: 10px;
+  transition: 0.5s ease all;
+
+}
+.stepsHeader:hover{
+  cursor: pointer;
+  background-color: #a1bddd
+}
+.stepHeaderText{
+  padding: 0;
+  padding-left: 10px;
+  font-size: 2.5rem
+}
+
+.stepPhase{
+  position: absolute;
+  top: 10px;
+  right: 50px;
+}
+
+.stepBody, .newOrgbody, .newOrgBookers{
+  margin: 0 5px;
+  padding: 1.2rem;
+  border-radius: 0 0 5px 5px;
+  text-align: center;
+  font-size: 1.5rem
+}
+
+.newOrgBookers{
+  padding: 0.5rem
+}
+
+.newOrgBookerTable{
+  margin: 0 auto;
+}
+
+.newOrgBookerRow>td, .newOrgBookers{
+  border-left: 3px solid #7BB1E3;
+  border-right: 3px solid #7BB1E3;
+}
+
+.step2Body{
+  height: 45vh;
+}
+
+.courseBookings, .formPartThree, .updateCourseBooking{
+  height: 48vh;
+  width: 100%;
+  padding-bottom: 2rem;
+  overflow: auto;
+}
+.detailsOverall:nth-child(odd){
+  border-top: 3px solid #7BB1E3;
+  border-bottom: 3px solid #7BB1E3;
+  margin: 1rem 0
+}
+.bookingHeader{
+  width: 100%;
+  background-color: #7BB1E3;
+  color: white
+}
+
+.detailsOverall{
+  list-style: none;
+  text-align: left
+}
+.input-group-text>i{
+  font-size: 2rem
+}
+
+.mobileInput, .input-group-text{
+  font-size: 1.5rem;
+}
+
+
+
+.trainerOnly, .newTrainerTickBox{
+  height: 3rem;
+  width: 3rem;
+}
+
+.subHeader, .submitNewOrg , .cancelNewOrg, .holOrAppointTasks, .bookingTypeSelect, .details{
+  margin: 1rem 0;
+}
+
+.newUserOrg, .newCompany, .submitNewOrg ,.cancelNewOrg, .cancelHolOrApp, .submitHolOrApp, .details, .nextStage, .prevStage, .finalStage{
+  font-size: 1.5rem;
+}
+
+.nextStage, .prevStage,.finalStage, .updateBooking{
+  font-size: 2rem;
+}
+.nextPart{
+  position: absolute;
+  bottom: 17%;
+  right: 0
+}
+
+.updatenextPart{
+  position: absolute;
+  bottom: 0;
+  right: 0
+}
+
+.prevPart{
+  position: absolute;
+  bottom: 17%;
+  left: 0
+}
+
+.bookingfooter{
+  position: absolute;
+  bottom: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.bookingTypeSelect, .proceedBooking>button{
+  text-align: center;
+  font-size: 2rem;
+}
+
+.toolTip{
+  font-size: 1.5rem
+}
+
+.hidden{
+  display: none
+}
+
+.loadingIOSpinner{
+  height: 20rem;
+  width: 20rem;
+}
+
+.complete{
+  color: #C6EBC9;
+}
+
+.complete>i{
+  font-size: 17rem
+}
+.mobileFooter{
+  position: fixed;
+  bottom: 0;
+  z-index: 10;
+  background-color: white
+}
+
+.imageMenu{
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  padding: 10px;
+  bottom: 5px;
+  right: 5px;
+  content: "";
+  background-image: url("/Images/MiniLogo.png");
+  background-position: 6px;
+  background-size: 90px 90px;
+  background-repeat: no-repeat;
+  background-color: white;
+  border-style: inset;
+  border-width: 20px;
+  border-color: #3F72AF;
+  border-radius: 100px;
+  box-shadow: 5px 5px 15px 5px #C2C2C2;
+  z-index: 4;
+}
+
+
+.diaryPage{
+  background-color: white;
+  position: absolute;
+  bottom: -100%;
+  display: none;
+  z-index: 0;
+  height: 90%
+}
+
+.footer{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  z-index: 2
+}
+
+.diarySwipe{
+font-size: 3rem;
+border-radius: 30px 30px 0 0;
+width: 12rem;
+padding:0.5rem 1rem;
+flex-grow: 1;
+color: white;
+background-color: #7BB1E3;
+border: none;
+z-index: 2;
+}
+
+
+.landingPage{
+  width:100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+}
+
+.landingLogo{
+  content: "";
+  height: 35vh;
+  width: 35vh;
+  background-image: url("/Images/MiniLogo.png");
+  background-size: 30vh;
+  background-position: 20px;
+  background-repeat: no-repeat;
+  background-color: white;
+  margin: 0 auto;
+}
+
+.landingButtons{
+  width: 100%;
+  margin: 50% 50%;
+  transform: translate(-50%, -75%);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.welcomeSign{
+  padding: 1rem;
+  font-size: 3rem;
+}
+.landingButton, .courseStage, .minimise, .registerOpen, .newDel, .imageUploadDel, .newDelSubmit, .delResults, .delCourseSubmit, .delCourseCancel{
+  font-size: 3.5rem;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: 30px;
+  border: none;
+  width: 35rem;
+  color: white;
+  background-color: #7BB1E3
+}
+
+.delCourseCancel{
+  background-color: red
+}
+.landingButton{
+    position: relative;
+}
+
+.addRowContainer{
+    border-radius: 0 5px 5px 0;
+    background-color: #3F72AF;
+    color: white;
+    padding: 0 5px;
+    font-size: 2rem;
+    width: 3.5rem;
+}
+.minimise{
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
+}
+
+.newDel{
+  position: absolute;
+  bottom: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.courseStage, .registerOpen, .imageUploadDel, .newDelSubmit, .delResults, .delCourseSubmit, .delCourseCancel{
+  font-size: 2rem;
+  width: 15rem;
+}
+
+.footerText{
+  flex-grow: 1;
+  width: 40rem;
+  font-size: 4rem;
+
+}
+
+.icon{
+  background-color: #7BB1E3;
+  color: white;
+  border-radius: 100px;
+  text-align: center;
+  width: 6rem;
+  height: 6rem;
+  margin: 0 auto;
+}
+
+.todayJob, .newBooking, .openJob, .registerSlide, .delUploadSlide,.editBooking{
+  display: none;
+  position: fixed;
+  z-index: 10;
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  width: 97vw;
+  height: 70vh;
+  margin: 0 auto;
+  padding: 10px;
+  background-color: white;
+  border-radius: 80px 80px 0 0;
+  box-shadow: 5px 1px 15px 3px #B3B3B3;
+}
+
+.newBookingInner, .editBookingInner{
+  position: relative;
+}
+
+.editBookingInner{
+  top:90px;
+}
+
+.todayScroll, .openScroll, .registerScroll, .delUploadPartOne{
+  margin:1% auto;
+  height: 75%;
+  width: 98%;
+  overflow: auto;
+}
+
+.todayCourse{
+  list-style-type: none;
+  font-size: 2rem;
+  padding: 10px;
+}
+.todayCourse:first-child{
+  border-radius: 80px 80px 0 0
+}
+.todayCourse:nth-child(even){
+  background-color: #DEECFC;
+}
+
+.jobStages{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.jobStages>div{
+border-right: solid 1px;
+flex-grow: 1
+}
+
+.jobStages>div:last-child{
+border-right: none;
+}
+
+.dayView{
+  display: block;
+  height: 100%;
+}
+
+.dateDayView{
+  margin-bottom : 1rem  ;
+  font-size : 2rem  ;
+  width :  100vw  ;
+  height : 4rem  ;
+  position : sticky  ;
+  display : block  ;
+  top : 0 ;
+  text-align :  left  ;
+  text-decoration :  underline;
+  background-color: #3F72AF;
+  color: white;
+  box-shadow: 0px 5px 6px -1px #B3B3B3;
+  padding: 0.5rem 0 0 0.5rem;
+}
+
+.dayViewItem{
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: inline-block;
+}
+.lastDay{
+  border-top':solid 4px
+}
+
+.dayViewDItem{
+    box-shadow: 5px 5px 6px -1px #B3B3B3;
+    margin:0 0 1.5rem 0.5rem;
+    padding: 4px;
+    font-size: 1.5rem
+}
+
+.sdHead, .sdBody{
+  border-bottom: solid 1px #3F72AF ;
+}
+
+.taskButtons, .cancelTasks, .openToTrainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.spTaskButton{
+  font-size: 2rem;
+  border-radius: 10px;
+}
+
+.taskButtons>div, .cancelTasks>div{
+  margin: 1rem;
+}
+
+.cancelCancellation, .confirmCancellation{
+  font-size: 2rem;
+}
+.stepBody>div, .bookingRow>div{
+  margin:1rem 0
+}
+
+.input-control-adjust{
+  font-size: 1.5rem;
+}
+
+.updateBody>.input-group>.form-control, .updateBody>.input-group>.form-select {
+  font-size: 1.5rem
+}
+
+.form-control-inline{
+  width: 4rem;
+  height: 2rem;
+}
+
+.updateBody>div{
+  margin:1rem 0
+}
+
+.updateBody{
+  display: inline-block;
+  overflow: auto;
+}
+
+.updateOptions{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateOptions>div{
+  margin: 0 2rem;
+}
+
+.updateOptions>div>.btn{
+  font-size: 2rem;
+}
+
+.bookingUpdatedNotification{
+  position: absolute;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 10rem;
+  font-size: 5rem;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 100px;
+  color: #4BAEA0;
+  background-color: #B6E6BD;
+  height: 10rem;
+  width: 10rem;
+}
+
+
+.courseRow{
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5rem;
+  height: 100%
+}
+.courseRow>div{
+  text-align: center;
+  vertical-align: middle;
+  line-height:auto;
+  padding: 10px;
+  border-right:2px solid
+}
+
+.courseRow>div:last-child{
+  border-right: none;
+  padding: 0 0.5rem;
+}
+.courseRow:nth-child(odd){
+  background-color: rgba(0,0,0,0.2);
+  border-top: none
+}
+
+.cancelCheck{
+  width: 3rem;
+  height: 3rem;
+}
+.cancelItems{
+  margin-top:1rem;
+}
+.cancelReason>select, .cancelReason>input ,.cancelOtherReason{
+  font-size: 1.5rem
+}
+
+.newNote>input, .newNote>select{
+  font-size: 2rem;
+}
+
+.newNote>button, .newNote>span{
+  font-size: 3rem
+}
+
+
+.newBookingInner, .preCheck{
+  margin-top: 6rem;
+  font-size: 1.5rem;
+}
+
+.newBookingInner{
+  position: relative;
+  width: 100%;
+  height: 65vh
+}
+.timeLineLocation{
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: -7%;
+  left: 5%;
+  width: 80%;
+}
+
+.timeLine{
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.timeLineStage{
+  position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 25%;
+}
+
+.horizontalLine:first-of-type{
+  border-radius:10px 0 0 10px
+}
+
+.horizontalLine{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+width: 100%;
+  content: "";
+  background-color: lightgrey;
+  border: 3px solid;
+  border-color: lightgrey;
+  height: 20px;
+  z-index: 1;
+}
+
+.circle{
+  position: relative;
+  margin: 0;
+  margin-left: 75%;
+  padding: 0;
+  height: 4rem;
+  width: 4rem;
+  content:"";
+  background-color: grey;
+  border-radius: 100px;
+  z-index: 2;
+  font-size: 3rem;
+  text-align: center;
+  vertical-align: middle;
+  color: #C6EBC9
+
+}
+
+.activetimeLine{
+  background-color: #C6EBC9
+}
+
+.activeCircle{
+  background-color: #70AF85
+}
+
+.active{
+  background-color: #C6EBC9;
+  color: #70AF85
+}
+
+.openJobs{
+  position: relative;
+}
+
+.openJobsNumber, .todayJobsNumber{
+  position: absolute;
+  top: 0;
+  right: -16px;
+  text-align: center;
+  padding: 1rem;
+  width: 5rem;
+  border-radius: 100px;
+  background-color: red;
+  font-size: 3rem;
+   box-shadow: 5px 5px 15px -2px #616161
+}
+.numberLoading{
+  height: 5rem;
+  width: 5rem;
+  content: '';
+  background-image: url("/Images/Spinner-1s-200px.gif");
+  background-size:5rem;
+  background-position: top;
+  margin-left: -1rem;
+}
+.delUploadPartOne{
+  width: 98%;
+  margin-top: 6rem;
+}
+
+.delegatePhoto{
+  height: 20vh;
+  width: auto
+}
+
+.disabled{
+  background-color: lightgrey;
+  color: grey
+}
+
+.delUploadNew>form>div{
+  margin-top: 1rem
+}
+
+.delUploadStatus>img{
+  height: 4rem;
+  width: 4rem;
+}
+.candidatesInner{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 1rem;
+}
+
+.trainerCheckIn{
+  padding-top: 10%;
+  justify-content: center;
+  align-items: baseline;
+}
+.candidatesInner>img{
+  height: 20rem;
+  width: auto;
+  margin: 1rem;
+}
+.registerScroll>.candidates:nth-child(2n+0){
+  background-color: lightgrey
+}
+
+.candidatesDetails{
+  flex-grow: 2;
+  text-align: left;
+  list-style: none;
+}
+
+.candidatesDetails>li{
+  font-size: 1.5rem;
+}
+
+.trainerRegCheck, .courseCheck{
+  height: 5rem;
+  width: 5rem;
+}
+
+.delCourseDetails{
+  display: flex;
+  flex-direction: row;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.delCourseDetails>div{
+  margin: 0 1rem;
+}
+
+.internalNotification{
+  color: #00FFAB
+}
+
+.externalNotification{
+  color: #6A67CE
+}
+
+
+/* Diary Stages */
+
+.NVQ{
+  background-color: #7F5283;
+  color:white;
+}
+
+.Confirmed, .Confirmedfirst{
+  background-color: #3DB2FF;
+  color: white;
+}
+
+.Provisional, .Provisionalfirst{
+  background-color: #F37121;
+  color: white;
+}
+
+.Cancelled, .Cancelledfirst{
+  background-color: #F32424;
+  color: white;
+}
+
+.Incomplete, .Incompltefirst{
+  background-color: #F9D923;
+  color: black;
+}
+
+.Outsourced, .Outsourcedfirst{
+  background-color: #ADCE74;
+  color: white;
+}
+
+.ConInvoicedfirst, .OutInvoicedfirst, .ProInvoicedfirst, .CanInvoicedfirst, .IncInvoicedfirst,.ConInvoiced, .OutInvoiced, .ProInvoiced, .CanInvoiced, .IncInvoiced{
+  background-color: #0093AB;
+  color: white;
+}
+.ConInvoicedfirst{
+  border-left: 6px solid #3DB2FF
+}
+.OutInvoicedfirst{
+  border-left: 6px solid #ADCE74
+}
+.ProInvoicedfirst{
+  border-left: 6px solid #F37121
+}
+.CanInvoicedfirst{
+  border-left: 6px solid #F32424
+}
+.IncInvoicedfirst{
+  border-left: 6px solid #F9D923
+}
+
+.PaidBooking{
+  background-color:#D0C9C0
+}
+.CancPaidBooking{
+  background-color:#D0C9C0;
+}
+
+.CancPaidBookingFirst{
+  background-color:#D0C9C0;
+  border-left: 6px solid #F32424
+}

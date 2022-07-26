@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/css/bookingEmailCss.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <style ="text/css">
+    .emailBody{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Raleway', sans-serif;
+      color: #001E6C;
+      font-size: 1rem;
+    }
+
+    .detailsBody{
+      text-align: center;
+      background-color: white;
+      width: 95%;
+      margin-top: 4rem;
+      border-radius: 20px;
+      box-shadow: 4px 4px 7px 3px rgba(157,157,157,0.44);
+      position: relative;
+    }
+    .emailHead{
+      border-radius: 20px 20px 0 0;
+      text-align:right;
+      padding:  40px 40px 0 0;
+    }
+
+    .emailHead>h5, .emailHead>h1{
+      text-align: center;
+    }
+        .imgLocation{
+          content: "";
+          position: absolute;
+          top:0;
+          left: 0;
+          height: 20%;
+          width: 60%;
+          border-radius: 20px 0 0 0;
+          background-image: url('https://vortex-dump.s3.eu-west-2.amazonaws.com/fehewb43vhmon5xdf5ndoimage001SREZ+(1).png');
+          background-color: #DEECFC ;
+          background-position: 20% 30%;
+          background-repeat: no-repeat;
+          background-size: 40%;
+          clip-path: polygon(0 0, 0% 100%, 100% 0);
+        }
+
+
+
+    .emailDetailsPartOne>li>h3{
+      margin:1px
+    }
+    .emailDetailsPartOne>li{
+      margin: 0.6rem 0;
+      width: 20rem;
+      text-align: right;
+    }
+
+
+    .emailDetailsPartOne, .emailDetailsPartTwo, .emailDetailsPartThree{
+      border-bottom: 1px solid lightGrey;
+      margin:0 1rem;
+      padding-bottom: 1rem;
+      text-align: center;
+      list-style: none;
+      font-size: 1rem
+    }
+
+    .emailDetailsPartOne{
+      display: flex;
+      flex-direction: column;
+      justify-content: right;
+      align-items:flex-end;
+      margin-top: 2rem;
+    }
+
+    .partThreeSectionOne{
+      list-style: initial;
+    }
+
+    .partTwoBody{
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .partTwoBody>table{
+      border-collapse: collapse;
+    }
+    .bookingInfo{
+      text-align: center;
+      width: 100%;
+    }
+
+    .bookingRow:nth-child(even){
+      border-bottom: 1px solid lightGrey
+    }
+
+    .bookingInfo>tbody>tr>td{
+      padding:1rem 0;
+    }
+
+    .footer{
+      margin: 1rem;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .vortexLogo{
+      width: 20vw
+    }
+
+    .awardingBody{
+      width: 50vw
+    }
+
+    .bookingInfo>tbody>tr>td>h6{
+      margin:0
+    }
+    </style>
+  </head>
+  <body>
+    <div class="emailBody">
+      <div class="detailsBody">
+        <div class="imgLocation">
+          <div class="img">
+
+          </div>
+        </div>
+        <div class="emailHead">
+          <img src="https://vortex-dump.s3.eu-west-2.amazonaws.com/Vortex+Training.png" alt="" class="vortexLogo">
+        </div>
+        <div class="emailDetails">
+
+            <div class="emailDetailsPartOne">
+              <li><h3>Customer Details</h3></li>
+              <li><strong>Name: <%= name %> </strong></li>
+              <li><strong>Email: <%= email %> </strong></li>
+              <li><strong>Organisation: <%= org %></strong></li>
+              <li><strong>Reference Number: <%= bookingRef %></strong></li>
+            </div>
+            <div class="emailDetailsPartTwo">
+              <h1>Booking Confirmation</h1>
+              <h5>We are pleased to confirm that your place(s) are now booked.  If you have any questions about your booking, please contact us on 01675 597385.</h5>
+              <div class="partTwoBody">
+                <table class="bookingInfo">
+                  <tr>
+                    <th>Start Date</th>
+                    <th>Total Days</th>
+                    <th>Location</th>
+                    <th>Courses</th>
+                    <th>Rate</th>
+                    <th>Accreditation Fee</th>
+                    <th>Total</th>
+                  </tr>
+                  <% bookings.forEach(function(bookingsFound){ %>
+                    <% console.log(bookingsFound.Start) %>
+                  <tr class="bookingRow">
+                    <td> <%= new Date(bookingsFound.Start).toLocaleDateString("EN-GB") %></td>
+                    <td> <%= bookingsFound.TotalDays %></td>
+                    <td> <%= bookingsFound.SiteLocation %></td>
+                    <td><% bookingsFound.CourseInfo.forEach(function(coursesFound){ %>
+                      <% if( coursesFound.TestingType == "NPORS Testing Type" ){ %>
+                        <li><%= coursesFound.Course %> - <%= coursesFound.BookedDelegates %></li>
+                      <% } else { %>
+                        <li><%= coursesFound.Course %> - <%= coursesFound.TestingType %> - <%= coursesFound.BookedDelegates %></li>
+                    <%  } %>
+                      <% }) %>
+                    </td>
+                    <td>£<%= bookingsFound.Rate %> x <%= bookingsFound.TotalDays %> days</td>
+                    <td>£<%= bookingsFound.CardRate %></td>
+                    <td>£<%= bookingsFound.Total %> + VAT</td>
+                  </tr>
+                  <% }) %>
+                  <tr>
+                    <td colspan="5"></td>
+                    <th>Grand Total</th>
+                    <td>£<%= overall %> + VAT</td>
+                  </tr>
+                  <tr>
+                    <td colspan="5"></td>
+                    <td colspan="2" align="center"><h6>**Depending on the number of attendees, the price may vary**</h6></td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+            <div class="emailDetailsPartThree">
+              <h3><u>Important Information</u></h4>
+              <div class="partThreeSectionOne" align="left">
+                  <h4><u>PPE for all Plant and Utilities courses:</u></h4>
+                  <p>All delegates must be in possession of full PPE. Mandatory PPE is Safety Boots, Hi-Vis Clothing (either Yellow or Orange), Hard Hat, Gloves, and Safety Glasses/Goggles were applicable.</p>
+                  <h4><u>Suitable Clothing for classroom-based courses:</u></h4>
+                  <p>Clothes that you don’t mind getting a little dirty.  Outdoor clothing for when we’re practising outdoors.</p>
+                  <h4><u>Photos:</u></h4>
+                  <p>EUSR, NPORS and SWQR require photos of each candidate, this is a standard process for us to register and apply for cards. </p>
+                  <h4><u>Candidate ID:</u></h4>
+                  <p> All candidates MUST provide their Mobile numbers and Email address as this is now a requirement for cards to be ordered please also make sure that candidates bring with them on the day photo ID, this can be one of the following:</p>
+                  <li>Passport</li>
+                  <li>Driving License</li>
+                  <li>Non-UK Driving License</li>
+                  <li>Work ID Card</li>
+                  <li>EU Country ID Card</li>
+                  <li>CITB Scheme Card</li>
+                  <li>Citizen Card</li>
+                  <li>Proof of Age Card</li>
+                  <li>Young Scots Card</li>
+                  <li>British Armed Forces/Veterans Card</li>
+                  <h4><u>Lunch:</u></h4>
+                  <p>We do not provided lunch. Were this is required we'd ask delegates to pack a lunch or utilise local services. It is essential that delegates return from lunch in a timely manner as instructed by course trainer.</p>
+              </div>
+            </div>
+        </div>
+        <img src="https://vortex-dump.s3.eu-west-2.amazonaws.com/Untitled+design+(4).png" alt="AwardingBody_Group" class="awardingBody">
+      </div>
+    </div>
+    <div class="footer">
+      <h6>With our online system we will also be taking information from the candidates in regards to their email and phone number as some awarding bodies now require this information, so please make sure the candidates have this information to hand. Please note no information will be passed onto any 3rd parties unless required to do so to complete certification(s).If you choose to cancel your booking the following charges will apply:21 days or more - No Fee || Within 14-20 days of course start date - 50% || Within 14 days of course start date - 100%</h6>
+    </div>
+  </body>
+</html>

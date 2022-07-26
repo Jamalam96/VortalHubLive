@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="/css/Letterhead.css">
+  </head>
+  <body style="font-size:10px">
+    <div class="letterheadBody">
+      <table>
+        <tr>
+          <th>Vortex Ref</th>
+          <th>Trainer</th>
+          <th>Dates</th>
+          <th>Company</th>
+          <th>Courses</th>
+          <th>Register</th>
+          <th>Paperwork</th>
+          <th>Certs</th>
+          <th>Cards</th>
+          <th>Invoice</th>
+          <th>Paid</th>
+        </tr>
+      <% users.forEach(function(start){ %>
+
+
+
+
+    <% start.Bookings.forEach(function(bookings){%>
+      <% if( start.VortexRef.startsWith("VN") || bookings.AwardingBody == "StreetWorks-Operator") { %>
+        <% if(start.Status != "Cancelled" || bookings.TrainerStage[bookings.TrainerStage.length-1].Stage != "Cancelled") { %>
+          <tr>
+          <td style="border:1px solid black"> <%= start.VortexRef %></td>
+          <td style="border:1px solid black"> <%= bookings.Trainer %> </td>
+          <td style="border:1px solid black"> <%= new Date(bookings.Start).toLocaleDateString("EN-GB") %> - <%= new Date(bookings.End).toLocaleDateString("EN-GB") %></td>
+          <td style="border:1px solid black"> <%= start.Organisation %> </td>
+          <td style="border:1px solid black">
+          <% bookings.CourseInfo.forEach(function(courses){ %>
+            <li> <%= courses.Course %> </li>
+          <% }) %>
+        </td>
+        <td style="border:1px solid black"> <%= bookings.Register[bookings.Register.length -1 ].Stage %></td>
+        <td style="border:1px solid black"> <%= bookings.Paperwork[bookings.Paperwork.length -1 ].Stage %></td>
+        <td style="border:1px solid black"> <%= bookings.Certs[bookings.Certs.length -1 ].Stage %></td>
+        <td style="border:1px solid black"> <%= bookings.Cards[bookings.Cards.length -1 ].Stage %></td>
+        <td style="border:1px solid black"> <%= bookings.Invoice[bookings.Invoice.length -1 ].Stage %></td>
+        <td style="border:1px solid black"> <%= bookings.Paid[bookings.Paid.length -1 ].Stage %></td>
+        </tr>
+        <% } %>
+
+    <% } %>
+          <% }) %>
+    <%  }) %>
+      </table>
+    </div>
+  </body>
+</html>

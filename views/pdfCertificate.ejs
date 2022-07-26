@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style ="text/css">
+      body{
+        background-image: url("https://vortex-dump.s3.eu-west-2.amazonaws.com/Copy+of+Copy+of+Vortex+Certificate+-+Manual+Handling+(2).png");
+        background-size: auto;
+        background-repeat: repeat-y;
+      }
+
+      .certBody{
+        height: 826px;
+        position: relative;
+      }
+
+      .cornerDetailTL{
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .cornerOne{
+        position: absolute;
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 100px 100px 0 0;
+        border-color: #007bff transparent transparent transparent;
+      }
+      .cornerTwo{
+        position: absolute;
+        content: '';
+        top:36px;
+        left:-51px;
+        border-bottom: 50px solid yellow;
+      	border-left: 50px solid transparent;
+      	border-right: 50px solid transparent;
+      	height: 0;
+      	width: 125px;
+        transform: rotate(-45deg);
+      }
+      .cornerThree{
+        position: absolute;
+        content: '';
+        top:-1px;
+        left: 70px;
+        width: 70px;
+        height: 100px;
+        transform: skew(-45deg);
+        background: #555;
+      }
+      .cornerFour{
+        position: absolute;
+        content: '';
+        top:-1px;
+        left: 155px;
+        width: 35px;
+        height: 50px;
+        transform: skew(-45deg);
+        background: #555;
+      }
+
+    </style>
+  </head>
+  <body>
+  <div class="certBody">
+    <div class="cornerDetailTL">
+      <div class="cornerOne"></div>
+      <div class="cornerTwo"></div>
+      <div class="cornerThree"></div>
+      <div class="cornerFour" style="position: absolute; content: ''; top:-1px; left: 155px; width: 35px; height: 50px; transform: skew(-45deg); background: #555;"></div>
+    </div>
+
+  </div>
+  </body>
+</html>

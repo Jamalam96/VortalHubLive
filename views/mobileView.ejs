@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vortal</title>
+<link rel="icon" href="/Images/MiniLogo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/48ae776f71.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="/css/mobile.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=1000, user-scalable=no">
+</head>
+
+<body onload="overFlow()">
+  <!-- Diary Body -->
+  <div class="landingPage">
+    <div class="landingLogo">
+    </div>
+    <div class="welcomeSign">
+      Welcome
+    </div>
+    <div class="landingButtons">
+
+      <div class="">
+        <button type="button" name="button" class="landingButton todayJobs">Today<span class="todayJobsNumber badge badge-pill badge-danger"><div class="numberLoading"></div></span></button>
+      </div>
+      <div class="">
+        <button type="button" name="button" class="landingButton openJobs">Open Job(s)<span class="openJobsNumber badge badge-pill badge-danger"><div class="numberLoading"></div></span></button>
+      </div>
+      <div class="">
+        <button type="button" name="button" class="landingButton">New Booking</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="mailIcon footerText">
+      <div class="icon">
+        <i class="far fa-envelope"></i>
+      </div>
+    </div>
+    <div class="diaryTab">
+      <button type="button" name="button" class="diarySwipe">Diary</button>
+    </div>
+    <div class="loggedOn footerText">
+      <div class="icon">
+        <span class="currentUser" data-currentUser="<%= currentUser %>"><%= userInitials %></span>
+      </div>
+    </div>
+  </div>
+  <div class="mobileFooter hidden">
+    <div class="dateSelection">
+      <div class="dateToggle ">
+        <i class="fas fa-chevron-left" onclick="addOneMonth(-1)"></i>
+      </div>
+      <div class="title">
+        <h3 class="currentMonth"></h3>
+        <em class="todayClick" onclick="today()">Today</em>
+      </div>
+      <div class="dateToggle">
+        <i class="fas fa-chevron-right" onclick="addOneMonth(+1)"></i>
+      </div>
+    </div>
+    <div class="imageMenu">
+    </div>
+  </div>
+  <div class="todayJob slideBody">
+    <div class="">
+      <button type="button" name="button" class="minimise"><i class="fas fa-compress"></i></button>
+    </div>
+    <div class="todayScroll">
+
+    </div>
+  </div>
+  <div class="openJob slideBody">
+    <div class="">
+      <button type="button" name="button" class="minimise"><i class="fas fa-compress"></i></button>
+    </div>
+    <h3>Current Open Jobs</h3>
+    <div class="openScroll">
+
+    </div>
+  </div>
+  <div class="newBooking slideBody">
+    <div class="">
+      <button type="button" name="button" class="minimise"><i class="fas fa-compress"></i></button>
+    </div>
+
+    <div class="preCheck">
+      <h1>What are you looking to book?</h1>
+      <select class="form-select mobileInput bookingTypeSelect" name="">
+        <option>Select One</option>
+        <option value="Training">Training</option>
+        <option value="Holiday">Holiday</option>
+        <option value="Appointment">Appointment</option>
+      </select>
+      <div class="proceedBooking hidden">
+        <button type="button" name="button" class="btn btn-success showBookingForm">Continue</button>
+      </div>
+      <div class="holOrAppoint hidden">
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Select Trainer</span>
+          </div>
+          <select class="form-select mobileInput" name="" id="holOrAppointTrainer">
+            <option> Select One</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Start Date</span>
+          </div>
+          <input type="date" name="" value="" class="form-control mobileInput holappStart">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">End Date</span>
+          </div>
+          <input type="date" name="" value="" class="form-control mobileInput holappEnd">
+        </div>
+        <textarea name="name" rows="3" class="form-control details" placeholder="Enter Details Here"></textarea>
+        <div class="holOrAppointTasks">
+          <button type="button" name="button" class="btn btn-success submitHolOrApp">Book</button>
+        </div>
+      </div>
+    </div>
+    <div class="newBookingInner hidden">
+      <div class="formPartOne">
+        <div class="companySection">
+          <input type="checkbox" class="trainerOnly" id="trainerOnly" name="trainerOnly" value="false">
+          <label for="trainerOnly">Trainer Only?</label>
+          <span class="toolTip">(This only applies to bookings where the trainer is supplied to another provider - no paperwork required for VTG)</span>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Select Organisation</span>
+            </div>
+            <input list="newOrgSelect" class="newOrgSelectInput form-control mobileInput" id="newOrgSelectInput" type="text" name="" value="Select One" autocomplete="off">
+            <datalist class="newOrgSelect" id="newOrgSelect"  autocomplete="off">
+            </datalist>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Select Booker</span>
+            </div>
+            <select class="form-select mobileInput newBookerSelect" name="newBookerSelect" id="newBookerSelect" onchange="bookerSelected()">
+              <option>Select One</option>
+            </select>
+          </div>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Booker Email</span>
+            </div>
+            <input class="form-control mobileInput" type="email" id="bookerEmail" name="bookerEmail" value="">
+          </div>
+        </div>
+        <button class="btn btn-primary newCompany" type="button" name="button" onclick="addNewOrg()"> New Company?</button>
+      </div>
+      <div class="newOrgbody hidden">
+        New Organisation
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">New Organisation Name</span>
+          </div>
+          <input class="form-control mobileInput" type="text" id="newOrgName" name="bookerEmail" value="">
+        </div>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Postal Address</span>
+          </div>
+          <input class="form-control mobileInput" type="text" id="newOrgPostal" name="bookerEmail" value="">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Billing Address</span>
+          </div>
+          <input class="form-control mobileInput" type="text" id="newOrgBilling" name="bookerEmail" value="">
+        </div>
+        <div class="subHeader">
+          Bookers/User <button type="button" name="button" class="btn btn-primary newUserOrg">New Row?</button>
+        </div>
+        <table class="newOrgBookerTable mobileInput">
+          <tr>
+            <th class="newOrgBookers">Full Name</th>
+            <th class="newOrgBookers">Email Address</th>
+            <th class="newOrgBookers">Job Title</th>
+            <th class="newOrgBookers">Trainer for Vortex?</th>
+            <th class="newOrgBookers">Access to Vortal?</th>
+          </tr>
+          <tr class="newOrgBookerRow">
+            <td class="newBookerName" contenteditable="true"></td>
+            <td class="newBookerEmail" contenteditable="true"></td>
+            <td class="newBookerJob" contenteditable="true"></td>
+            <td><input type="checkbox" id="trainerForVortex" name="trainerForVortex" class="newTrainerTickBox" value="false"></td>
+            <td><input type="checkbox" id="accesstoVortal" name="accesstoVortal" class="newTrainerTickBox" value="false"></td>
+          </tr>
+        </table>
+        <button class="btn btn-primary submitNewOrg" type="button" name="button">Submit</button><button class="btn btn-danger cancelNewOrg" type="button" name="button" onclick="newOrgCancel()">Cancel</button>
+      </div>
+      <div class="formPartTwo hidden">
+          <button type="button" name="button" class="btn btn-primary newRow mobileInput" onclick="addRow()">Additional Booking</button></span>
+          <div class="courseBookings">
+            <div class="bookingRow bRow">
+              <div class="bookingHeader">
+                <h1> Booking 1 </h1>
+              </div>
+              <div>
+                <input type="text" name="el" id="el" placeholder="el" value="" class="hidden"></td>
+                <input type="text" id="overallTotal" class="hidden"name="" value="">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Time Scale</span>
+                  </div>
+                  <select class="timeScale form-select mobileInput" name="timeScale" id="timeScale">
+                    <option value="FullDay">Full Day</option>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Start Date</span>
+                </div>
+                <input type="date" name="start_date" id="start_date" class="start_date form-control mobileInput " min="1997-1-1" max="2100-12-31">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">End Date</span>
+                </div>
+                <input type="date" name="end_date" class="form-control mobileInput" id="end_date" min="1997-1-1" max="2100-12-31"></td>
+                <div class="input-group-prepend hidden">
+                  <span class="input-group-text" id="basic-addon1"><i class="fas fa-clock"></i></span>
+                </div>
+                  <input type="number" name="total_days" id="total" class="rateChange form-control mobileInput disabled hidden" value="" style="width:50px" disabled>
+              </div>
+              <div class="trainerArray">
+                <div class="input-group trainerSelectRow">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-image-portrait"></i></span>
+                  </div>
+                  <select class="mobileInput form-select newTrainerSelect" name="newtrainerSelect" id="newtrainerSelect">
+                    <option value="Not Assigned">Select One</option>
+                  </select>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Start</span>
+                  </div>
+                  <input  class="trainerStart form-control mobileInput"type="date" name="" value="">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">End</span>
+                  </div>
+                  <input  class="trainerEnd form-control mobileInput"type="date" name="" value="">
+
+                </div>
+              </div>
+
+              <button type="button" name="button" class="btn btn-primary mobileInput addNewTrainer"> Add Trainer</button>
+              <button type="button" name="button" class="btn btn-danger mobileInput removeLastTrainer" disabled> Remove Last Trainer</button>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Location</span>
+                </div>
+                <div class="col-md-10">
+                  <input type="text" class="form-control mobileInput" name="siteLocation" id="siteLocation" value="" placeholder="Site Location">
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Site Contact</span>
+                </div>
+                <input type="text" class="form-control mobileInput" name="siteContact" id="siteContact" value="" placeholder="Site Contact">
+                <div class="input-group-prepend">
+
+                  <span class="input-group-text" id="basic-addon1">Contact Number</span>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" class="form-control mobileInput" name="siteNumber" id="siteContactNumber" value="" style="width:160px" placeholder="Contact Number">
+                </div>
+              </div>
+              <div class="subHeader">
+                Course Details
+
+              </div>
+              <div class="">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Awarding Body</span>
+                  </div>
+                  <select class="awardingBody form-select mobileInput" name="awardingBody" id="awardingBody">
+                    <option>Select One</option>
+                  </select>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Card Selection</span>
+                  </div>
+                  <select class="rateChange form-select mobileInput" name="cardReq" id="cardReq">
+                  </select>
+                </div>
+              </div>
+              <div class="rowCT rowOne">
+                <div class="input-group courseSelection">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" for="inputGroupSelect01">Course</label>
+                  </div>
+                  <input list="coursePicker" id="coursePickerInput" class="coursePickerSelect form-control mobileInput" type="text" name="" value="Select One" autocomplete="off">
+                  <datalist class="coursePicker" id="coursePicker" autocomplete="off">
+                  </datalist>
+                  <div class="input-group-prepend testType hidden">
+                    <label class="input-group-text" for="inputGroupSelect01">NPORS Test Type</label>
+                  </div>
+                  <select class="levelPicker form-select testType mobileInput hidden" name="levelPicker" id="levelPicker" name="">
+                    <option value="NPORS Testing Type">Select One</option>
+                    <option value="Novice">Novice</option>
+                    <option value="Refresher">Refresher</option>
+                    <option value="EWT">EWT</option>
+                    <option value="Conversion">Conversion</option>
+                  </select>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Delgates</i></span>
+                  </div>
+                  <div class="col-md-1">
+                    <input type="number" class="bookedDelegates rateChange form-control mobileInput" name="bookedDelegates" id="bookedDelegates" value="">
+                  </div>
+                  <div class="addRowContainer addcourseRow">+</div>
+                </div>
+
+              </div>
+              <div class="subHeader">
+                Rates
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Day or Candidate Rate</label>
+                </div>
+                <select class="form-select mobileInput rateChange" id="DayOrCandidate" name="">
+                  <option>Select One</option>
+                  <option value="Day Rate">Day Rate</option>
+                  <option value="Candidate Rate">Candidate Rate</option>
+                </select>
+              </div>
+              <div class="input-group ">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Course Rate £</span>
+                </div>
+
+                  <input type="number" class="rateChange form-control mobileInput" name="rate" id="rate" value="">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Card Rate £</span>
+                </div>
+
+                  <input type="number" class="rateChange form-control mobileInput" name="cardRate" id="cardRate" value="">
+
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Booking Total £</span>
+                </div>
+                  <input type="number" class="totalBooking form-control mobileInput" id="totalBooking" value="">
+                  <button type="button" name="button" class="btn btn-primary hidden overwrittenUndo"> Undo Overwrite</button>
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">PO Number</span>
+                </div>
+                <div class="col-md-4">
+                  <input type="text" id="poNumber" name="" value="" placeholder="PO Here" class="form-control mobileInput">
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+      </div>
+      <div class="formPartThree hidden">
+        <div class="detailsMain">
+          <p class="detailsTO"></p>
+          <p> Organisation: <span class="detailsOrg"></span></p>
+          <span> Booker Name: <span class="detailsBooker"></span><span> Booker Email:</span><span class="detailsEmail"></span></p>
+        </div>
+      </div>
+
+      <div class="formPartFour hidden">
+        <div class="Uploading">
+          <img src="/Images/Spinner-1s-200px.gif" alt="" class="loadingIOSpinner">
+          <h1>Uploading..</h1>
+        </div>
+        <div class="complete hidden">
+          <i class="far fa-check-circle"></i>
+          <h1>Uploaded</h1>
+        </div>
+      </div>
+      <div class="prevPart hidden">
+        <button type="button" name="button" class="btn btn-primary prevStage"> Prev Stage </button>
+      </div>
+      <div class="col-lg-4 bookingfooter">
+        <select class="form-select mobileInput hidden" id="status" name="">
+          <option>Select Status</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Provisional">Provisional</option>
+          <option value="Incomplete">Incomplete</option>
+          <option value="Holiday">Holiday</option>
+          <option value="Appointment">Appointment</option>
+          <option value="Outsourced">Outsourced</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+      <div class="nextPart">
+        <button type="button" name="button" class="btn btn-primary nextStage"> Next Stage </button>
+        <button type="button" name="button" class="btn btn-success finalStage hidden disabled"> Submit </button>
+      </div>
+      <div class="timeLineLocation">
+        <div class="timeLine">
+          <div class="timeLineStage">
+            <div class="horizontalLine activetimeLine">
+            </div>
+            <div class="circle activeCircle">
+            </div>
+          </div>
+          <div class="timeLineStage stageTwo">
+            <div class="horizontalLine">
+            </div>
+            <div class="circle">
+            </div>
+          </div>
+          <div class="timeLineStage stageThree">
+            <div class="horizontalLine">
+            </div>
+            <div class="circle">
+            </div>
+          </div>
+          <div class="timeLineStage stageFour">
+            <div class="horizontalLine">
+            </div>
+            <div class="circle">
+              <i class="fa-solid fa-check hidden"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <div class="editBooking slideBody">
+    <div class="">
+      <button type="button" name="button" class="minimise"><i class="fas fa-compress"></i></button>
+    </div>
+    <div class="editBookingInner">
+      <div class="">
+          <div class="updateCourseBooking">
+            <div class="bookingRowUpdate bRowUpdate">
+              <div class="bookingHeader">
+                <h1> Booking 1 </h1>
+              </div>
+              <div>
+                <input type="text" name="el" placeholder="el" value="" class="hidden updateel"></td>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Time Scale</span>
+                  </div>
+                  <select class="timeScale form-select mobileInput updateTimeScale" name="timeScale">
+                    <option value="FullDay">Full Day</option>
+                    <option value="AM">AM</option>
+                    <option value="PM">PM</option>
+                  </select>
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Start Date</span>
+                </div>
+                <input type="date" name="start_date" class="start_date form-control mobileInput updateStart" min="1997-1-1" max="2100-12-31">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" >End Date</span>
+                </div>
+                <input type="date" name="end_date" class="form-control mobileInput updateEnd" min="1997-1-1" max="2100-12-31"></td>
+                <div class="input-group-prepend hidden">
+                  <span class="input-group-text" ><i class="fas fa-clock"></i></span>
+                </div>
+                  <input type="number" name="total_days" class="form-control mobileInput updateTotalDays disabled hidden" value="" style="width:50px" disabled>
+              </div>
+              <div class="updateTrainerArray">
+                <div class="input-group updateTrainerSelectRow">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-image-portrait"></i></span>
+                  </div>
+                  <select class="mobileInput form-select updatetrainerSelect" name="updatetrainerSelect">
+                    <option value="Not Assigned">Select One</option>
+                  </select>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">Start</span>
+                  </div>
+                  <input  class="updatetrainerStart form-control mobileInput"type="date" name="" value="">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">End</span>
+                  </div>
+                  <input  class="updatetrainerEnd form-control mobileInput"type="date" name="" value="">
+
+                </div>
+              </div>
+
+              <button type="button" name="button" class="btn btn-primary mobileInput addNewUpdateTrainer"> Add Trainer</button>
+              <button type="button" name="button" class="btn btn-danger mobileInput removeUpdateLastTrainer"> Remove Last Trainer</button>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Location</span>
+                </div>
+                <div class="col-md-10">
+                  <input type="text" class="form-control mobileInput updateLocation" name="siteLocation" value="" placeholder="Site Location">
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Site Contact</span>
+                </div>
+                <input type="text" class="form-control mobileInput updateContact" name="siteContact" value="" placeholder="Site Contact">
+                <div class="input-group-prepend">
+
+                  <span class="input-group-text" id="basic-addon1">Contact Number</span>
+                </div>
+                <div class="col-md-4">
+                  <input type="number" class="form-control mobileInput updateContactNumber" name="siteNumber"  value="" style="width:160px" placeholder="Contact Number">
+                </div>
+              </div>
+              <div class="subHeader">
+                Course Details
+
+              </div>
+              <div class="">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Awarding Body</span>
+                  </div>
+                  <select class="awardingBody form-select mobileInput updateAwardingBody" name="awardingBody">
+                    <option>Select One</option>
+                  </select>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Card Selection</span>
+                  </div>
+                  <select class="rateChange form-select mobileInput updateCardReq" name="cardReq">
+                  </select>
+                </div>
+              </div>
+              <div class="updateCoursesArray">
+                <div class="rowCTUpdate rowOneUpdate">
+                  <div class="input-group updatecourseSelection">
+                    <div class="input-group-prepend">
+                      <label class="input-group-text" for="inputGroupSelect01">Course</label>
+                    </div>
+                    <input list="updatecoursePicker"  class="updatecoursePickerSelect form-control mobileInput updateCourse" type="text" name="" autocomplete="off">
+                    <datalist class="updatecoursePicker" id="updatecoursePicker" autocomplete="off">
+                    </datalist>
+                    <div class="input-group-prepend testType hidden">
+                      <label class="input-group-text" for="inputGroupSelect01">NPORS Test Type</label>
+                    </div>
+                    <select class="levelPicker form-select testType mobileInput hidden updateTestingType" name="levelPicker" name="">
+                      <option value="NPORS Testing Type">Select One</option>
+                      <option value="Novice">Novice</option>
+                      <option value="Refresher">Refresher</option>
+                      <option value="EWT">EWT</option>
+                      <option value="Conversion">Conversion</option>
+                    </select>
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Delgates</i></span>
+                    </div>
+                    <div class="col-md-1">
+                      <input type="number" class="bookedDelegates form-control mobileInput updateBookedDelegates" name="bookedDelegates" id="bookedDelegates" value="">
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              <button type="button" name="button" class="btn btn-primary mobileInput addupdatecourseRow"> Add Course</button>
+              <button type="button" name="button" class="btn btn-danger mobileInput removeUpdateLastCourse"> Remove Last Course</button>
+
+              <div class="subHeader">
+                Rates
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">Day or Candidate Rate</label>
+                </div>
+                <select class="form-select mobileInput updaterateType"  name="">
+                  <option>Select One</option>
+                  <option value="Day Rate">Day Rate</option>
+                  <option value="Candidate Rate">Candidate Rate</option>
+                </select>
+              </div>
+              <div class="input-group ">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Course Rate £</span>
+                </div>
+
+                  <input type="number" class="rateChange form-control mobileInput updateRate" name="rate" value="">
+
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Card Rate £</span>
+                </div>
+
+                  <input type="number" class="rateChange form-control mobileInput updateCardRate" name="cardRate" value="">
+
+              </div>
+
+              <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">PO Number</span>
+                </div>
+                <div class="col-md-4">
+                  <input type="text" name="" value="" placeholder="PO Here" class="form-control mobileInput updatePO">
+                </div>
+              </div>
+              <div class="input-group">
+                <div class="input-group-prepend"><span class="input-group-text">NPORS Notification</span></div><select class="notificationNpors form-control selectpicker">
+                  <option value="">Select One</option>
+                  <option value="Internal">Internal</option>
+                  <option value="External">External</option>
+                </select>
+                <div class="input-group-prepend"><span class="input-group-text">Status</span></div><select class="editStatus form-control selectpicker" name="">
+                  <option value="Confirmed">Confirmed</option>
+                  <option value="Provisional">Provisional</option>
+                  <option value="Outsourced">Outsourced</option>
+                  <option value="Incomplete">Incomplete</option>
+                  <option value="Cancelled" class="hidden">Cancelled</option>
+                </select>
+              </div>
+
+            </div>
+          </div>
+
+
+      </div>
+      <div class="updatenextPart">
+        <button type="button" name="button" class="btn btn-success updateBooking"> Submit </button>
+      </div>
+    </div>
+
+
+  </div>
+
+  <div class="registerSlide slideBody">
+    <div class="">
+      <button type="button" name="button" class="minimise"><i class="fas fa-compress"></i></button>
+    </div>
+    <h3>Register</h3>
+    <div class="registerScroll">
+
+    </div>
+    <div class="">
+      <button type="button" name="button" class="newDel"> + </button>
+    </div>
+  </div>
+  <div class="delUploadSlide slideBody">
+    <div class="">
+      <button type="button" name="button" class="minimise"><i class="fas fa-compress"></i></button>
+    </div>
+    <h3></h3>
+    <div class="delUploadPartOne">
+      <h4>Select One</h4>
+      <select class="form-select mobileInput delegateType" name="">
+        <option value=""></option>
+        <option value="New"> New Delegate </option>
+        <option value="Returning"> Returning Delegate</option>
+      </select>
+      <div class="delUploadReturning">
+
+      </div>
+      <div class="delUploadNew">
+          <form class="" action="" method="post" enctype="multipart/form-data" id="delegateRegister">
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">First Name</span>
+              </div>
+              <input type="text" name="" value="" placeholder="First Name" class="form-control mobileInput" id="firstName">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Surname</span>
+              </div>
+              <input type="text" name="" value="" placeholder="SurName" class="form-control mobileInput" id="surName">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Company</span>
+              </div>
+              <input type="text" name="" value="" placeholder="Company" class="form-control mobileInput" id="company">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Date of Birth</span>
+              </div>
+              <input type="date" name="" class="form-control mobileInput" id="dob">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Email</span>
+              </div>
+              <input type="text" name="" value="" placeholder="Email Address" class="form-control mobileInput" id="email">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Contact Number</span>
+              </div>
+              <input type="tel" name="" value="" placeholder="Contact Number" class="form-control mobileInput" id="contactNumber">
+            </div>
+              <h3>ID Check - Trainer to complete</h3>
+              <select class="form-select mobileInput" name="" id="idCheck">
+                <option value="">Select One</option>
+                <option value="Passport">Passport</option>
+                <option value="Driving License">Driving License</option>
+                <option value="CSCS">CSCS</option>
+                <option value="Other">Other</option>
+              </select>
+            <div class="input-group">
+              <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Last 4 Digits</span>
+              </div>
+              <input type="number" name="" value="" placeholder="Last 4 Digits" class="form-control mobileInput" pattern="[0-9]*" id="lastDig">
+            </div>
+            <button type="button" name="button" class="imageUploadDel"> Upload Image</button>
+              <input type="file" name="photoUpload" value="" id="photoUpload" class="hidden">
+              </div>
+              <div class="imageSection">
+            </div>
+            <button type="button" name="button" class="newDelSubmit disabled">Submit</button>
+          </form>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="diaryPage">
+    <div class="bodyMain vortalWindow">
+      <div class="diaryBody">
+        <div class="gridheaders">
+          <div class="itemHeader"> Sun </div>
+          <div class="itemHeader"> Mon </div>
+          <div class="itemHeader"> Tues </div>
+          <div class="itemHeader"> Wed </div>
+          <div class="itemHeader"> Thurs </div>
+          <div class="itemHeader"> Fri </div>
+          <div class="itemHeader"> Sat </div>
+        </div>
+        <div class="grid">
+          <!-- items loaded here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="menuSlide hidden">
+  <li class="msToday msButton">Today's Jobs</li>
+  <li class="msOpen msButton">Open Jobs</li>
+  <li class="msNew msButton">New Booking</li>
+  <li class="msMonth msButton">Month View</li>
+  </div>
+
+  <!-- end of diary -->
+  <!-- scripts -->
+  <script src="/scripts/mobilescript.js" charset="utf-8"></script>
+
+</body>
+
+</html>

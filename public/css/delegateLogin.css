@@ -1,0 +1,243 @@
+body{
+  background-color: #DBE2EF;
+  font-size: 2rem;
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+.backgroundDiv{
+  display: flex;
+}
+
+.loginForm, .loginFormTwo, .options{
+  justify-content: center;
+  overflow: visible;
+  margin: 40vh auto;
+  padding-top: 4rem;
+  width: 60vw;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 5px 5px 6px -1px #A1A1A1;
+  text-align: center;
+  color: #3F72AF
+}
+.options{
+  padding: 10px;
+}
+.loginFormFlex, .returningFlex{
+  display: flex;
+  flex-direction: row;
+}
+
+.returningFlex{
+  padding: 20px 10px;
+  text-align: left;
+  list-style-type: none
+}
+
+.returningFlex li{
+  padding: 10px;
+}
+.loginFormTwo{
+    padding-top: 1rem;
+}
+.loginFormSection, .returningInfo{
+  display: none
+}
+.loginSection{
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  display: none;
+}
+
+.passwordInput{
+  color:#3F72AF;
+  font-size: 3rem;
+  border-radius: 10px;
+  border-color: lightGrey;
+  text-align: center;
+  height: 7rem;
+  width: 7rem;
+  margin: 10px;
+}
+
+.submitButton{
+  font-size: 3rem;
+  margin: 10px;
+}
+.loginStatus{
+  width:100%
+}
+
+.correctCode{
+  background-color: #C1DEAE;
+  color: #219F94;
+ }
+
+ .incorrectCode{
+   background-color: #FFB5B5;
+   color: #9B0000;
+ }
+
+.delegateFormInput{
+  margin: 10px;
+  z-index: 1;
+}
+
+.headerBox{
+  position: absolute;
+  top: -7rem;
+  left: 50%;
+  transform: translate(-50%);
+  text-align: center;
+  color: white;
+  padding: 2rem;
+  height: 10rem;
+  width: 50vw;
+  background-color: #3F72AF;
+  border-radius: 30px;
+  z-index: -1;
+  box-shadow: 5px 5px 6px -1px #A1A1A1;
+}
+
+.centerBox{
+  position: relative;
+}
+
+.imageBox{
+  display: block;
+  position: absolute;
+  border-radius: 100px;
+  height: 10rem;
+  width: 10rem;
+  font-size: 6rem;
+  top: -6rem;
+  left: 50%;
+  transform: translate(-50%);
+  background-color: lightGrey;
+  text-align: center;
+}
+
+.imageSection{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width:40%;
+}
+
+.imagePrompt{
+  font-size: 0.6rem;
+  height: 1rem;
+}
+
+.addImageArea{
+  text-align: center;
+  font-size: 6.5rem;
+  width: 10rem;
+  height: 10rem;
+  background-color: #DBE2EF;
+  border-radius: 100px;
+}
+
+.formSection,.returningDetails{
+  width:100%;
+  border-right-style:groove;
+  border-right-width: 4px;
+  padding-top: 1rem
+}
+
+.returningDetails, .candidateImg{
+  display: none
+}
+
+.delegatePhoto, .candidateImg{
+  height: 20rem;
+  width: 7.5;
+}
+
+.courseSelection{
+  margin-top: 20px;
+  font-size: 1rem;
+}
+
+.coursesAttending, .returnCoursesAttending{
+  height: 2rem;
+  width: 2rem;
+}
+
+.courseData{
+  width: 100%;
+  text-align: center;
+}
+
+.imageInput{
+  display: none;
+}
+
+.courseItemised{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.photoWarning{
+  color: red
+}
+
+.submitFooter{
+  margin: 20px 0;
+}
+
+.returningHeader{
+  justify-content: center;
+  align-items: center;
+}
+
+.returningImage{
+  padding: 20px;
+}
+
+.detailsClassification{
+  display:none;
+  font-size: 1rem;
+  color: red;
+  font-style: italic;
+}
+
+.returnSubmit{
+  display: none;
+  padding: 10px;
+}
+
+.loadingScreen{
+  background-color: rgba(192,192,192, 0.5);
+  display: none;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height:100%;
+}
+
+.successScreen{
+  display: none;
+  text-align: center;
+  color:#219F94;
+  height: 20rem;
+  width:100%;
+}
+
+.errorCode{
+  font-size: 1rem;
+  background-color: #FFB5B5;
+  color: #9B0000;
+}
+
+.optionsFlex{
+  margin-bottom: 20px;
+}

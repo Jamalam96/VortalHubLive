@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style ="text/css">
+    .letterheadBody{
+    position: relative;
+    }
+
+    .topTriangle{
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 150px 500px 0 0;
+    border-color: #DEECFC transparent transparent transparent;
+    }
+    .vortexImage{
+      position: absolute;
+      height: 130px;
+      width: 130px;
+      top: -140px;
+      left: 10px;
+      content: '';
+      background-image: url("https://vortex-dump.s3.eu-west-2.amazonaws.com/fehewb43vhmon5xdf5ndoimage001SREZ+(1).png");
+      background-size: 100%;
+      background-repeat: no-repeat;
+    }
+    .trainingLogo{
+      position: absolute;
+      top: 70px;
+      right: 10px;
+      height: 70px;
+    }
+
+    .emailBody{
+      position: absolute;
+      top: 180px;
+      height: 50%;
+      left: 10%;
+      width: 82%;
+      text-align: left;
+    }
+    </style>
+  </head>
+  <body style="font-family: Arial, sans-serif;font-size: 10px">
+    <div class="letterheadBody">
+      <div class="topTriangle"><div class="vortexImage"></div></div>
+      <img class="trainingLogo" src="https://vortex-dump.s3.eu-west-2.amazonaws.com/Vortex+Training.png" alt="">
+      <div class="emailBody" style="font-size:12px; list-style:none; line-height: 1.2;">
+        <% var courseArr = [] %>
+        <p> <%= new Date().toLocaleDateString("EN-GB") %></p>
+        <br>
+        <li> <%= data[0].Organisation %> </li>
+        <% var address = orgAddress.split(",")%>
+        <% address.forEach(function(line){ %>
+            <li><%=line %></li>
+        <% }) %>
+        <br>
+        <p><strong><u>Ref:<%=data[0].VortexRef%> -
+          <% data[0].Bookings.forEach(function(booking){%>
+              <% if(booking._id == specific) {%>
+                <%= new Date(booking.Start).toLocaleDateString("EN-GB") %>
+                - <%= booking.AwardingBody %>
+                - <%booking.CourseInfo.forEach(function(courses){ %>
+              <% courseArr.push(courses.Course) %>
+
+            <% })%>
+            <%= courseArr.join(",")%>
+              <%}%>
+          <% }) %>
+      </u></strong></p>
+        <p>We have the pleasure of enclosing all the certification documentation for the delegates below which attended and passed the above categories:</p>
+          <ul>
+            <% data.forEach(function(start){ %>
+                <% start.Bookings.forEach(function(bookings){ %>
+                  <% if(bookings._id == specific){ %>
+                    <% bookings.Delegates.forEach(function(delegates){ %>
+                      <% var passArr = [] %>
+                          <% delegates.Course[0].forEach(function(delcourse){%>
+                              <% if(delcourse.PassFail == "Pass") {%>
+                                  <%  passArr.push("Passed") %>
+                              <% } %>
+                          <%})%>
+                          <% if(passArr.length > 0){%>
+                            <li><%= delegates.FirstName %> <%= delegates.Surname %></li>
+                          <% } %>
+                      <% }) %>
+                  <% } %>
+
+                <% }) %>
+            <% }) %>
+          </ul>
+        <p>Should you have any queries in relation to the courses or you require any further information, please do not hesitate to contact us on Tel: <u>01675 597385</u>, why not drop us an email: <u>Info@vortexgroup.co.uk</u> or check out our website at: <u>www.vortexgroup.co.uk</u> for a list of all our courses and NVQ's.</p>
+        <br>
+        <p><strong>All the best,</strong></p>
+        <p><strong>The Vortex Team</strong></p>
+      </div>
+
+
+    </div>
+  </body>
+</html>

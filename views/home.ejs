@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Vortal</title>
+<link rel="icon" href="/Images/MiniLogo.png">
+  <script src="https://kit.fontawesome.com/48ae776f71.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="/css/master.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+</head>
+
+<body onresize="overFlow()">
+  <div class="imageOverlay hidden">
+    <a download href="" class="downloadImage" target="_blank">
+      <img class="imageZoom" src="" alt="">
+    </a>
+  </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div class="searchBox">
+    <div class="closeSearch">
+      <i class="fa-solid fa-circle-xmark"></i>
+    </div>
+    <div class="input-group searchFunctions">
+      <div class="col-md-7">
+        <input type="text" name="" value="" class="form-control searchTextBox">
+      </div>
+      <div class="">
+        <select class="form-select searchDropDown" name="">
+          <option value="VortexRef">Vortex Ref</option>
+          <option value="Delegate">Delegate(s)</option>
+          <option value="Organisation">Organisation</option>
+          <option value="InvNo">Invoice Number</option>
+          <option value="RefNumber">Ref. Number</option>
+        </select>
+      </div>
+    </div>
+    <div class="foundItems">
+      <div class="foundScroll">
+
+      </div>
+    </div>
+  </div>
+  <div class="flex-container">
+    <div class="navBar">
+
+      <div class="logoBox">
+        <img class="vortalLogo" src="Images/MiniLogo.png" alt="VortalLogo.png">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+      <div class="navItemsGroup">
+        <div class="navTag">
+        </div>
+        <li class="vortalNavItem itemHover active" data-navitem="Dashboard">
+          <div class="NavBarIcon"><i class="fa-solid fa-circle-notch"></i></div>
+        </li>
+        <li class="vortalNavItem itemHover" data-navitem="Diary">
+          <div class="NavBarIcon"><i class="fas fa-calendar-alt"></i></div>
+        </li>
+        <li class="vortalListItem itemHover" data-navitem="Outstanding">
+          <div class="NavBarIcon"><i class="fa-solid fa-list"></i></div>
+        </li>
+        <li class="vortalNavItem itemHover" data-navitem="Documents">
+          <div class="NavBarIcon"><i class="fa-solid fa-folder"></i></div>
+        </li>
+        <li class="vortalNavItem itemHover" data-navitem="Delegates">
+          <div class="NavBarIcon"><i class="fa-solid fa-user-group"></i></div>
+        </li>
+        <li class="vortalNavItem itemHover" data-navitem="Organisations">
+          <div class="NavBarIcon"><i class="fa-solid fa-industry"></i></div>
+        </li>
+        <li class="vortalNavItem itemHover" data-navitem="Courses">
+          <div class="NavBarIcon"><i class="fa-solid fa-user-graduate"></i></div>
+        </li>
+        <li class="vortalNavItem itemHover" data-navitem="Trainers">
+          <div class="NavBarIcon"><i class="fa-solid fa-chalkboard-user"></i></div>
+        </li>
+      </div>
+
+      <div class="currentLoggedOn" data-userfn="<%= currentUser %>">
+        <%= userInitials %>
+      </div>
+    </div>
+    <div class="unfinishedInfo">
+
+      <div class="missingInfo">
+        <div class="">
+          <input type="text" name="" value="" class="form-control courseSearchMissing" placeholder="Search Courses">
+          <select class="searchOptions form-select" name="">
+            <option value="Reference">Course Reference</option>
+            <option value="Delegate">Delegate</option>
+            <option value="Organisation">Organisation</option>
+          </select>
+        </div>
+        <div class="input-group missingSortBy">
+          <div class="input-group-prepend">
+            <span class="input-group-text missingSortByHeader">Sort By</span>
+          </div>
+          <select class="sortByMissing form-select" name="">
+            <option value="Date: Newest - Oldest">Date: Newest - Oldest</option>
+            <option value="Date: Oldest - Newest">Date: Oldest - Newest</option>
+          </select>
+        </div>
+      </div>
+      <div class="missingInfoDiv">
+
+      </div>
+    </div>
+    <!-- Diary Body -->
+
+
+    <div class="dashboardMain vortalWindow">
+      <div class="dashboardHead">
+        <img src="/Images/VortalLogo.png" alt="">
+
+      </div>
+      <div class="dashboardBody">
+        <div class="dashAreaOne">
+          <div class="dashboardSectionOne">
+            <div class="userAreaOne" data-userid="<%= userid %>">
+              <div class="userIcon">
+                <%= userInitials %>
+              </div>
+            </div>
+            <div class="userAreaTwo">
+              Hello <%= firstName %>!
+            </div>
+          </div>
+          <div class="dashboardSectionTwo">
+            Reminders Here
+
+
+            - Coming Soon!
+          </div>
+          <div class="dashboardSectionThree">
+            NPORS Expiry
+
+
+
+            - Coming Soon!
+          </div>
+        </div>
+        <div class="dashAreaTwo">
+          <div class="dashboardSectionFour">
+            Todays Jobs Here
+
+
+
+            - Coming Soon!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="documentsMain vortalWindow">
+      <div class="documentsHead">
+        Documents
+      </div>
+      <div class="documentsBody">
+        <div class="bodyScroll">
+            <div class="docSectionSplit">
+              <div class="docOneColumnOne">
+                <div class="columnScroll">
+                  <table class="docTableMain">
+                    <tr>
+                      <th class="tableHead"></th>
+                      <th class="tableHead">Vortex Ref</th>
+                      <th class="tableHead">Organisation</th>
+                      <th class="tableHead endCell"></th>
+                    </tr>
+
+                  </table>
+
+                </div>
+              </div>
+              <div class="docOneColumnTwo">
+                <table class="docTableFolder">
+                  <tr>
+                    <td class="viewFolder">Register<span class="registerCount"></span></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td class="viewFolder">Paperwork<span class="paperworkCount"></span></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  </tr>
+                  <td class="viewFolder">FrontSheet(s)<span class="frontSheets"></span></td>
+                  <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td class="viewFolder">Certification & Cards<span class="cotCount"></span></td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <td class="viewFolder">Other Docs<span class="otherCount"></span></td>
+                  <td>&nbsp;</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="docOneColumnThree">
+                <table class="innerFolderView">
+
+                </table>
+              </div>
+              <div class="docOneColumnFour">
+                <embed class="pdfViewer hidden" src="https://vortal-bucket.s3.eu-west-2.amazonaws.com/ba4d8dfd-11ab-4c95-a9d1-286ce95a49fe-Npors+Paperwork+04.03.2022.pdf" width="200%" height="100%"></embed>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="trainersMain vortalWindow">
+      <div class="trainerBody">
+        <div class="trainerScroll">
+          <table class="trainerMatrixList">
+            <tr>
+              <td>Full Name</td>
+              <td>Contact Details</td>
+              <td>Location</td>
+              <td>Active</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="trainerFull" data-trainerid="">
+        <div class="trainerHeadMatrix">
+          <h3 class="trainerName"></h3>
+        </div>
+        <select class="activeTrainerMatrix" name="">
+          <option value="Active">Active</option>
+          <option value="Not Active">Not Active</option>
+        </select>
+        <div class="trainerCVLocation"></div>
+        <form method="post" enctype="multipart/form-data" id="trainerCVUploadForm" class="hidden"><input type="file" name="trainerCVUpload" value="" id="trainerCVUpload"></form>
+        <div class="tmMainDetails">
+          <div class="rowOneTM">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Date Of Birth</span>
+              </div>
+              <input type="date" name="" value="" class="form-control" id="tmDateOfBirth">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Email Address</span>
+              </div>
+              <input type="text" name="" value="" class="form-control" id="tmEmailAddress">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Contact Number</span>
+              </div>
+              <input type="text" name="" value="" class="form-control" id="tmNumber">
+            </div>
+          </div>
+          <div class="rowTwoTM">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Company Name</span>
+              </div>
+              <input type="text" name="" value="" class="form-control" id="tmCompany">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Rate £</span>
+              </div>
+              <input type="text" name="" value="" class="form-control" id="tmRate">
+            </div>
+          </div>
+          <div class="rowThreeTM">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Location</span>
+              </div>
+              <input type="text" name="" value="" class="form-control" id="tmLocation">
+            </div>
+          </div>
+        </div>
+        <div class="trainerDocsArea">
+          <h6 class="newDocumentTM"> New Folder <i class="fas fa-plus-circle newDocsLoad"></i></h6>
+          <form method="post" enctype="multipart/form-data" id="trainerDocsUploadForm" class="hidden"><input type="file" name="trainerDocsUpload" value="" id="trainerDocsUpload"></form>
+          <div class="trainerDocumentSection">
+            <div class="folderDocumentsTM">
+              <h4 class="noDocsPHTM">No Documents</h4>
+            </div>
+            <div class="folderView">
+
+            </div>
+          </div>
+
+        </div>
+        <div class="tmRegistrationDetails">
+          <div class="newRegDetails">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Awarding Body</span>
+              </div>
+              <select class="regAwardingBody form-select trainerAwardingSelect" name="">
+
+              </select>
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Registration Number</span>
+              </div>
+                <input type="text" name="" value="" class="form-control trainerRegNumber">
+            </div>
+            <div class="regActions">
+              <i class="fa-regular fa-circle-check regConfirm addTrainerReg"></i>
+              <i class="fa-regular fa-circle-xmark regCancel"></i>
+            </div>
+          </div>
+          <div class="regDetailsTM">
+
+          </div>
+        </div>
+        <div class="tmCertificates">
+          <div class="tmListCertifications">
+
+          </div>
+        </div>
+        <div class="tmCourses">
+          <div class="newCourseAdded">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Awarding Body</span>
+              </div>
+              <select class="regAwardingBody form-select trainerAwardingBody" name="">
+
+              </select>
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Course</span>
+              </div>
+              <select class="regCourseSelect form-select trainerCourseSelect" name="">
+
+              </select>
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Expiry Date</span>
+              </div>
+                <input type="date" name="" value="" class="form-control trainerCourseExp">
+            </div>
+            <div class="regActions">
+              <i class="fa-regular fa-circle-check regConfirm addCourseTrainer"></i>
+              <i class="fa-regular fa-circle-xmark regCancel"></i>
+            </div>
+          </div>
+          <div class="tmCourseScroll">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="bodyMain vortalWindow">
+
+      <div class="newBookingFormTwo">
+        <div class="formSelect">
+          <select class="bookingSelect form-select" name="">
+            <option value="Select One">Select One</option>
+            <option value="Training">Training</option>
+            <option value="Holiday">Holiday</option>
+            <option value="Appointment">Appointment</option>
+          </select>
+          <div class="">
+            <i class="fa-solid fa-xmark closeBookingForm"></i>
+          </div>
+        </div>
+
+        <div class="newBookingTrainingForm hidden formOptions">
+          <div class="bookingHeader">
+            Booker Information
+          </div>
+
+
+        <div class="newBookingBookerInfo newBookingWindow hidden">
+          <input type="checkbox" class="trainerOnly" id="trainerOnly" name="trainerOnly" value="false">
+            <label for="trainerOnly">Trainer Only?</label>
+            <div class="toolTip">(This only applies to bookings where the trainer is supplied to another provider - no paperwork required for VTG)</div>
+            <li>Select Organisation</li>
+            <input list="newOrgSelect" class="newOrgSelectInput form-control" id="newOrgSelectInput" type="text" name="" value="Select One" onchange="orgSelected()" autocomplete="off">
+            <datalist class="newOrgSelect" id="newOrgSelect" onchange="orgSelected()" autocomplete="off"></datalist>
+            <li>Select Booker</li>
+            <select class="form-select" name="newBookerSelect" id="newBookerSelect" onchange="bookerSelected()">
+              <option>Select One</option>
+            </select>
+            <li>Booker Email</li>
+            <input class="form-control" type="email" id="bookerEmail" name="bookerEmail" value="">
+  <button class="btn btn-primary newCompany" type="button" name="button" onclick="addNewOrg()"> New Company?</button>
+  <div class="newOrgbody hidden">
+    New Organisation
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">New Organisation Name</span>
+      </div>
+      <input class="form-control" type="text" id="newOrgName" name="bookerEmail" value="">
+    </div>
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Postal Address</span>
+      </div>
+      <input class="form-control" type="text" id="newOrgPostal" name="bookerEmail" value="">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">Billing Address</span>
+      </div>
+      <input class="form-control" type="text" id="newOrgBilling" name="bookerEmail" value="">
+    </div>
+    <div class="subHeader">
+      Bookers/User <button type="button" name="button" class="btn btn-primary newUserOrg">New Row?</button>
+    </div>
+    <table class="newOrgBookerTable">
+      <tr>
+        <th class="newOrgBookers">Full Name</th>
+        <th class="newOrgBookers">Email Address</th>
+        <th class="newOrgBookers">Job Title</th>
+        <th class="newOrgBookers">Trainer for Vortex?</th>
+        <th class="newOrgBookers">Access to Vortal?</th>
+      </tr>
+      <tr class="newOrgBookerRow">
+        <td class="newBookerName" contenteditable="true"></td>
+        <td class="newBookerEmail" contenteditable="true"></td>
+        <td class="newBookerJob" contenteditable="true"></td>
+        <td><input type="checkbox" id="trainerForVortex" name="trainerForVortex" class="newTrainerTickBox" value="false"></td>
+        <td><input type="checkbox" id="accesstoVortal" name="accesstoVortal" class="newTrainerTickBox" value="false"></td>
+      </tr>
+    </table>
+    <button class="btn btn-primary submitNewOrg" type="button" name="button">Submit</button><button class="btn btn-danger cancelNewOrg" type="button" name="button" onclick="newOrgCancel()">Cancel</button>
+  </div>
+        </div>
+        <div class="bookingHeader">
+          Bookings Details
+        </div>
+        <div class="newBookingBookingInfo newBookingWindow hidden">
+          <div class="">
+                    <button type="button" name="button" class="btn btn-primary newRow" onclick="addRow()">Additional Booking</button></span>
+                    <div class="courseBookings">
+                      <div class="bookingRow bRow">
+                        <div>
+                          <input type="text" name="title" id="title" placeholder="title" class="hidden" required>
+                          <input type="text" name="el" id="el" placeholder="el" value="" class="hidden"></td>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">Time Scale</span>
+                            </div>
+                            <select class="timeScale form-select" name="timeScale" id="timeScale">
+                              <option value="FullDay">Full Day</option>
+                              <option value="AM">AM</option>
+                              <option value="PM">PM</option>
+                            </select></td>
+                          </div>
+                        </div>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Start Date</span>
+                          </div>
+                          <input type="date" name="start_date" id="start_date" class="start_date form-control" min="1997-1-1" max="2100-12-31">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">End Date</span>
+                          </div>
+                          <input type="date" name="end_date" class="form-control" id="end_date" min="1997-1-1" max="2100-12-31"></td>
+                          <input type="number" name="total_days" id="total" class="rateChange form-control hidden totalDaysNew" value="" style="width:50px" disabled>
+                        </div>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Location</span>
+                          </div>
+                          <div class="col-md-10">
+                            <input type="text" class="form-control" name="siteLocation" id="siteLocation" value="" placeholder="Site Location">
+                          </div>
+                        </div>
+                        <div class="input-group trainerArray">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Site Contact</span>
+                          </div>
+                          <input type="text" class="form-control" name="siteContact" id="siteContact" value="" placeholder="Site Contact">
+                          <div class="input-group-prepend">
+
+                            <span class="input-group-text" id="basic-addon1">Number</span>
+                          </div>
+                          <div class="col-md-4">
+                            <input type="number" class="form-control" name="siteNumber" id="siteContactNumber" value="" placeholder="Contact Number">
+                          </div>
+                        </div>
+                        <button type="button" name="button" class="btn btn-primary bookingaddTrainer"> Add Trainer</button>
+                        <button type="button" name="button" class="btn btn-danger bookingremoveLastTrainer" disabled> Remove Last Trainer</button>
+                          <div class="input-group bookingTrainerArray">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1"><i class="fa-solid fa-image-portrait"></i></span>
+                            </div>
+                            <select class="selectpicker form-select newTrainerSelect" name="newtrainerSelect" id="newtrainerSelect">
+                              <option>Select One</option>
+                            </select>
+                            <input type="date" name="" value="" class="bookingtrainerStart form-control">
+                            <input type="date" name="" value="" class="bookingtrainerEnd form-control">
+                          </div>
+                        <div class="subHeader">
+                          Course Details
+                        </div>
+                        <div class="">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">Awarding Body</span>
+                            </div>
+                            <select class="awardingBody form-select" name="awardingBody" id="awardingBody">
+                              <option>Select One</option>
+                            </select>
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">Card Selection</span>
+                            </div>
+                            <select class="rateChange form-select" name="cardReq" id="cardReq">
+                            </select>
+                          </div>
+                        </div>
+                        <button type="button" name="button" class="btn btn-primary addcourseRow">Add Course</button>
+                        <button type="button" name="button" class="btn btn-danger removecourseRow" disabled>Remove Last</button>
+                        <div class="rowCT rowOne">
+                          <div class="input-group courseSelection">
+                            <div class="input-group-prepend">
+                              <label class="input-group-text" for="inputGroupSelect01">Course</label>
+                            </div>
+                            <input list="coursePicker" id="coursePickerInput" class="coursePickerSelect form-control" type="text" name="" value="Select One" autocomplete="off">
+                            <datalist class="coursePicker" id="coursePicker" autocomplete="off">
+                            </datalist>
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">Delgates</i></span>
+                            </div>
+                            <div class="col-md-1">
+                              <input type="number" class="bookedDelegates rateChange form-control" name="bookedDelegates" id="bookedDelegates" value="">
+                            </div>
+                          </div>
+                          <div class="input-group">
+                            <div class="input-group-prepend testType hidden">
+                              <label class="input-group-text" for="inputGroupSelect01">NPORS Test Type</label>
+                            </div>
+                            <select class="levelPicker form-select testType hidden" name="levelPicker" id="levelPicker" name="">
+                              <option value="NPORS Testing Type">Select One</option>
+                              <option value="Novice">Novice</option>
+                              <option value="Refresher">Refresher</option>
+                              <option value="EWT">EWT</option>
+                              <option value="Conversion">Conversion</option>
+                            </select>
+                          </div>
+
+                        </div>
+                        <div class="subHeader">
+                          Rates
+                        </div>
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <label class="input-group-text" for="inputGroupSelect01">Day or Candidate Rate</label>
+                          </div>
+                          <select class="form-select" id="DayOrCandidate" name="">
+                            <option>Select One</option>
+                            <option value="Day Rate">Day Rate</option>
+                            <option value="Candidate Rate">Candidate Rate</option>
+                          </select>
+                        </div>
+                        <div class="input-group ">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Course Rate £</span>
+                          </div>
+                            <input type="number" class="rateChange form-control" name="rate" id="rate" value="">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Card Rate £</span>
+                          </div>
+                            <input type="number" class="rateChange form-control" name="cardRate" id="cardRate" value="">
+
+                        </div>
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" id="basic-addon1">Booking Total £</span>
+                            </div>
+                              <input type="number" class="totalBooking form-control" id="totalBooking" value="">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">PO Number</span>
+                              </div>
+                                <input type="text" id="poNumber" name="" value="" placeholder="PO Here" class="form-control">
+                          </div>
+                      </div>
+                    </div>
+
+                  </div>
+        </div>
+        <div class="bookingHeader">
+          Booking Overview & Confirmation
+        </div>
+        <div class="newBookingBookingConfirmation newBookingWindow hidden">
+          <div class="detailsMain">
+            <p class="detailsTO"></p>
+            <p> Organisation: <span class="detailsOrg"></span></p>
+            <span> Booker Name: <span class="detailsBooker"></span><span> Booker Email:</span><span class="detailsEmail"></span></p>
+          </div>
+            <select class="form-select" id="status" name="">
+              <option>Select One</option>
+              <option value="Confirmed">Confirmed</option>
+              <option value="Provisional">Provisional</option>
+              <option value="Incomplete">Incomplete</option>
+              <option value="Outsourced">Outsourced</option>
+              <option value="Cancelled">Cancelled</option>
+            </select>
+          <button type="button" name="button" class="btn btn-success confirmBooking" onclick="newFormSubmission()" disabled>Create Booking</button>
+
+        </div>
+
+
+        </div>
+        <div class="newHolidayBooking hidden formOptions">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Start</span>
+            </div>
+              <input class="holApptStart form-control" type="date" name="" value="">
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">End</span>
+            </div>
+            <input class="holApptEnd form-control" type="date" name="" value="">
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Trainer</span>
+            </div>
+                          <select class="newTrainerSelectHolAppt form-select" name="">
+
+                          </select>
+          </div>
+          <textarea name="name" class="holAppDetails form-control" rows="8" cols="40" placeholder="Enter details here"></textarea>
+          <button class="btn btn-success submitHolorApp"type="button" name="button">Submit</button>
+
+        </div>
+      </div>
+      <div class="mainBodyFlex">
+        <div class="mainBodyFlexOne">
+          <div class="row">
+            <div class="col-sm-2 dateToggle">
+              <i class="fas fa-chevron-left" onclick="addOneMonth(-1)"></i>
+            </div>
+            <div class="col title">
+              <h3 class="currentMonth"></h3>
+              <em class="todayClick" onclick="today()">Today</em>
+            </div>
+            <div class="col-sm-2 dateToggle">
+              <i class="fas fa-chevron-right" onclick="addOneMonth(+1)"></i>
+            </div>
+          </div>
+          <div class="row">
+            <div class="diaryBody">
+              <div class="gridheaders">
+                <div class="itemHeader"> Sunday </div>
+                <div class="itemHeader"> Monday </div>
+                <div class="itemHeader"> Tuesday </div>
+                <div class="itemHeader"> Wednesday </div>
+                <div class="itemHeader"> Thursday </div>
+                <div class="itemHeader"> Friday </div>
+                <div class="itemHeader"> Saturday </div>
+              </div>
+              <div class="gridOuter">
+                <div class="grid">
+                  <!-- items loaded here -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mainBodyFlexTwo">
+            <div class="sidePanel">
+              <div class="newBookings">
+                <div class="addItem" onclick="newItemShow()">
+                  New <i class="fa-solid fa-circle-plus" ></i>
+                </div>
+
+              </div>
+              <div class="detailedSection">
+                <i class="fas fa-lock-open lockSymbol"></i>
+                <div class="detailsHere"></div>
+              </div>
+              <div class="filteringSection">
+                <div class="filteringDiv">
+                  <div class="filteringItems">
+                    Filter List <i class="fa-solid fa-filter"></i>
+                    <div class="trainerfilteredList">  </div>
+                    <div class="orgfilteredList">  </div>
+                  </div>
+                  <div class="filteringButtons">
+                    <button type="button" name="button" onclick="resetFilter()" class="btn btn-danger">Reset</button>
+                  </div>
+                </div>
+                <div class="trainersDiv">
+                  <h6 class="trainerFilter">Trainers <span><i class="fa-solid fa-chevron-down trainerToggle"></i></span></h6>
+                  <div class="trainersListDiv hidden">
+                    <ul class="trainerList"></ul>
+                  </div>
+                </div>
+                <div class="orgDiv">
+                  <h6 class="orgFilter">Organisations <span><i class="orgToggle fa-solid fa-chevron-down "></i></span></h6>
+                  <div class="orgListDiv hidden">
+                    <ul class="orgList"></ul>
+                  </div>
+                </div>
+              </div>
+
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="delegatesMain vortalWindow">
+      <div class="searchBar">
+        <div class="candidateSearch input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"> Search </span>
+          </div>
+          <input type="text" name="" value="" class="form-control candidateSearchBar" placeholder="Search here..">
+          <div class="input-group-append">
+            <span class="input-group-text clearCandidateSearch"><i class="fa-solid fa-xmark"></i></span>
+            </div>
+          </div>
+      </div>
+      <div class="candidatesInner">
+        <div class="candidateOverFlow">
+          <table class="delegatesList">
+            <tr>
+              <td></td>
+              <td>Full Name</td>
+              <td>Vortex Ref</td>
+              <td>Course(s)</td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="overLayCandidate">
+        <div class="delegateDetailsEdit">
+          <div class="imgPlaceHolderTwo">
+            <div class="candidateImgTwo">
+            </div>
+            <button type="button" name="button" class="editCandidatePhoto">Change</button>
+          </div>
+          <form class="delegateForm">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text editModeLabel">First Name</span>
+              </div>
+              <input type="text" name="" value="" class="form-control editModeInput" id="candidateFirstName">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text editModeLabel">Surame</span>
+              </div>
+              <input type="text" name="" value="" class="form-control editModeInput" id="candidateSurname">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text editModeLabel">Date of Birth</span>
+              </div>
+              <input type="date" name="" value="" class="form-control editModeInput" id="candidateDOB">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text editModeLabel">Mobile Number</span>
+              </div>
+              <input type="tel" name="" value="" class="form-control editModeInput" id="candidateMobileNumber">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text editModeLabel">Email Address</span>
+              </div>
+              <input type="text" name="" value="" class="form-control editModeInput" id="candidateEmailAddress">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text editModeLabel">Company</span>
+              </div>
+              <input type="text" name="" value="" class="form-control editModeInput" id="candidateCompany">
+            </div>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text editModeLabel">ID Check</span>
+              </div>
+              <select class="form-control editModeInput" id="candidateIdCheck" name="">
+                <option value="">Select One</option>
+                <option value="Passport">Passport</option>
+                <option value="Driving License">Driving License</option>
+                <option value="CSCS">CSCS</option>
+              </select>
+              <div class="input-group-prepend">
+                <span class="input-group-text editModeLabel">Last 4 Digits</span>
+              </div>
+              <input type="number" name="" value="" class="form-control editModeInput" id="candidateLastDigits">
+            </div>
+          </form>
+          <table class="courseInfoCandidate">
+            <tr>
+              <td>Course</td>
+              <td>Date</td>
+              <td>Trainer</td>
+              <td>Pass/Fail</td>
+              <td class="editFailReason">Reason for Failure</td>
+            </tr>
+          </table>
+          <button type="button" name="button" class="btn btn-danger closeCandidate">Close Delegate</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="orgMain vortalWindow">
+      <div class="orgsInner">
+
+        <div class="orgsScroll">
+                  <input type="text" name="" value="" class="form-control orgSearch" placeholder="Search Here..">
+          <table class="orgMatrixList">
+            <tr>
+              <td></td>
+              <td>Organisations</td>
+              <td>
+                <button type="button" name="button" class="btn btn-success addNewOrgs">New</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="orgOverlay" data-orgid="">
+        <div class="">
+          <button type="button" name="button" class="btn btn-success newOrg"><i class="fas fa-save"></i>  Save</button>
+          <button type="button" name="button" class="btn btn-danger cancelOrg"><i class="fa-solid fa-xmark"></i>  Cancel</button>
+        </div>
+        <div class="orgPlaceHolderTwo">
+          <div class="orgImage">
+
+          </div>
+        </div>
+        <input type="text" name="" value="" class="form-control orgHeader">
+        <div class="">
+          <div class="orgStatusOuter">
+            <div class="input-group orgStatus">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Status</span>
+              </div>
+              <select class="form-control" name="" id="orgStatus">
+                <option value="Active">Active</option>
+                <option value="Account On Hold">Account On Hold</option>
+                <option value="Deactive">Deactive</option>
+              </select>
+          </div>
+          </div>
+
+
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Postal Address</span>
+            </div>
+              <input type="text" name="" value="" class="form-control" id="orgEditPostal">
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Billing Address</span>
+            </div>
+              <input type="text" name="" value="" class="form-control" id="orgEditBilling">
+          </div>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Office Number</span>
+            </div>
+            <input type="tel" name="" value="" class="form-control" id="orgNumber">
+          </div>
+        </div>
+        <h5 class="employeeHeader">Employees</h5>
+        <button type="button" name="button" class="btn btn-success newUser"><i class="fas fa-plus"></i>  New Employee</button>
+      <div class="orgUserDetails">
+
+        <table class="userDetailsList">
+          <tr>
+            <td>Full Name</td>
+            <td>Email Address</td>
+            <td>Contact Number</td>
+            <td>Main Contact</td>
+            <td>Access to Votal</td>
+            <td>Site Permissions</td>
+          </tr>
+        </table>
+      </div>
+        <div class="orgPrefences">
+          <h5>Preferences</h5>
+          <h6>Marketing Preferences</h6>
+          <div class="orgMarketingPref">
+
+            <div class="form-check form-check-inline">
+              <input class="form-check-input orgCheckBox" type="checkbox" id="orgMarketingEmail" value="">
+              <label class="form-check-label" for="inlineCheckbox1">Email</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input orgCheckBox" type="checkbox" id="orgMarketingText" value="">
+              <label class="form-check-label" for="inlineCheckbox1">Text</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input orgCheckBox" type="checkbox" id="orgMarketingCalls" value="">
+              <label class="form-check-label" for="inlineCheckbox1">Texts</label>
+            </div>
+          </div>
+          <h6>Accreditation(s) without Payment?</h6>
+        <div class="">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input orgCheckBox" type="checkbox" id="orgAccredWPay" value="">
+          </div>
+        </div>
+        <h6>Awarding Body Accreditation Preferences</h6>
+        <div class="accreditationPref">
+          <table class="accredTable">
+            <tr class="orgAwardingBodies">
+
+            </tr>
+            <tr class="awardingBodiesPref">
+
+            </tr>
+          </table>
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="coursesMain vortalWindow">
+      <div class="input-group courseHeader">
+        <input type="text" name="" value="" class="form-control courseSearch" placeholder="Search Here..">
+         <button type="button" name="button" class="btn btn-success addCourseItem">Add</button>
+      </div>
+      <div class="courseDetailsList">
+
+      </div>
+      <div class="courseOverlay">
+        <div class="coursesHeader">
+          Select an awarding body.
+          <select class="awardingBodySelect form-control" name="">
+            <option value="" class="selectOneAwardingBody">Select One</option>
+            <option value="Other">Other</option>
+          </select>
+          <p class="awardingBodyTooltip"><em> Select other if you are creating a new Awarding Body.</em></p>
+          <input type="text" name="" value="" class="form-control awardingBodyInput hidden" placeholder="Enter Awarding Body Name Here..">
+          <div class="">
+            <div class="form-check form-check-inline">
+                <label class="form-check-label" for="inlineCheckbox1">Cards</label>
+                  <input class="form-check-input accredCheckBox" type="checkbox" id="awardingBodyCards" value="No">
+              </div>
+              <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="inlineCheckbox1">Certs</label>
+                    <input class="form-check-input accredCheckBox" type="checkbox" id="awardingBodyCerts" value="No">
+                </div>
+                <div class="form-check form-check-inline">
+                    <label class="form-check-label" for="inlineCheckbox1">Paperwork</label>
+                      <input class="form-check-input accredCheckBox" type="checkbox" id="awardingBodyPaperwork" value="No">
+                  </div>
+          </div>
+          <div class="accredTypesCourses">
+            <h6>Accreditation Types <span class="addAccred"><i class="fa-solid fa-circle-plus"></i></span></h6>
+          </div>
+        </div>
+        <div class="editCoursesList">
+          <h6 class="coursesHeaderDesc">Course(s)<span class="addCourseDetails"><i class="fa-solid fa-circle-plus"></i></span></h6>
+        </div>
+        <div class="">
+          <button type="button" name="button" class="btn btn-success submitCourseChanges">Submit</button>
+          <button type="button" name="button" class="btn btn-danger cancelCourseChange">Cancel</button>
+        </div>
+      </div>
+    </div>
+    <!-- Matrix Section -->
+    <div class="matrixBody vortalWindow">
+      <div class="cancelOverlay">
+      <div class="cancelDetails">
+        <i class="fa-solid fa-xmark cancelClose"></i>
+        <h5>Cancel Course</h5>
+        <div class="cancelSpecifics">
+          <div class="cancellationRow">
+            <div class="cancelDataRow">
+              <div class="cancelHeader"><span class="matrixHeader">Dates:</span> <span class="cancelDates"></span></div>
+              <div class="cancelHeader"><span class="matrixHeader">Trainer:</span> <span class="cancelTrainer"></span></div>
+              <div class="cancelHeader"><span class="matrixHeader">Courses:</span> <span class="cancelCourses"></span></div>
+              <div class="cancelHeaderCheck"><input type="checkbox" name="" value="" class="cancelCheck"></div>
+            </div>
+            <div class="cancellationDetails hidden">
+              <div class="cancelHeader"><span class="matrixHeader">Reason</span>
+                <select class="cancelReason form-select" name="">
+                  <option value="Booked In Error">Booked In Error</option>
+                  <option value="Duplication">Duplication</option>
+                  <option value="Training No Longer Required">Training No Longer Required</option>
+                  <option value="Training Could Not Atttend">Training Could Not Atttend</option>
+                  <option value="COVID">COVID</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+              <div class="cancelHeader"><span class="matrixHeader">To Invoice?</span>
+                <select class="cancelAmount form-select" name="">
+                  <option value="Yes - 100%">Yes - 100%</option>
+                  <option value="Yes - 50%">Yes - 50%</option>
+                  <option value="Yes - Other">Yes - Other</option>
+                  <option value="No">No</option>
+                </select>
+              </div>
+              <div class="cancelHeader"><span class="matrixHeader"> Rate</span>
+                <input type="text" name="" value="" class="cancelRate form-control" disabled>
+              </div>
+            </div>
+            <div class="otherReasonCancel hidden">
+              <input type="text" name="" value="" class="form-control otherReasonField" placeholder="Type Reason Here">
+            </div>
+          </div>
+        </div>
+        <div class="cancelButton">
+          <button type="button" name="button" class="btn btn-success cancelConfirm">Submit Cancellation</button>
+        </div>
+      </div>
+      </div>
+      <div class="vortexRefHeader">
+        <div class="vortexRefHeaderInner">
+          <h2 class="vortexRefMatrix"></h2>
+          <i class="fa-solid fa-xmark closeMatrix"></i>
+        </div>
+        <div class="bookingItemsBar"></div>
+      </div>
+      <div class="matrixScroll">
+        <div class="matrixBookingInfomation">
+          <div class="OverlayTwo">
+            <div class="delegateDetailsEdit">
+              <div class="imgPlaceHolderTwo">
+                <div class="delegateImgTwo">
+                </div>
+                <button type="button" name="button" class="editPhoto">Change</button>
+              </div>
+              <p class="removeImage">Remove Image <i class="fas fa-trash-alt"></i></p>
+              <form class="delegateForm">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text editModeLabel">First Name</span>
+                  </div>
+                  <input type="text" name="" value="" class="form-control editModeInput" id="editModeFirstName">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text editModeLabel">Surname</span>
+                  </div>
+                  <input type="text" name="" value="" class="form-control editModeInput" id="editModeSurname">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text editModeLabel">Date of Birth</span>
+                  </div>
+                  <input type="date" name="" value="" class="form-control editModeInput" id="editModeDOB">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text editModeLabel">Mobile Number</span>
+                  </div>
+                  <input type="tel" name="" value="" class="form-control editModeInput" id="editModeMobileNumber">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text editModeLabel">Email Address</span>
+                  </div>
+                  <input type="text" name="" value="" class="form-control editModeInput" id="editModeEmailAddress">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text editModeLabel">Company</span>
+                  </div>
+                  <input type="text" name="" value="" class="form-control editModeInput" id="editModeCompany">
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text editModeLabel">ID Check</span>
+                  </div>
+                  <select class="form-control editModeInput" id="editModeIdCheck" name="">
+                    <option value="">Select One</option>
+                    <option value="Passport">Passport</option>
+                    <option value="Driving License">Driving License</option>
+                    <option value="CSCS">CSCS</option>
+                  </select>
+                  <div class="input-group-prepend">
+                    <span class="input-group-text editModeLabel">Last 4 Digits</span>
+                  </div>
+                  <input type="number" name="" value="" class="form-control editModeInput" id="editModeLastDigits">
+                </div>
+              </form>
+
+              <div class="">
+                <button type="button" name="button" class="btn btn-info addCourseRow">Add Course</button>
+              </div>
+              <table class="courseInfoEditMode">
+                <tr>
+                  <td>Course</td>
+                  <td>Date</td>
+                  <td>Trainer</td>
+                  <td>Pass/Fail</td>
+                  <td class="editFailReason">Reason for Failure</td>
+                </tr>
+              </table>
+            </div>
+            <div class="editDetailsFooter">
+              <button type="button" name="button" class="btn btn-success submitEdit">Submit</button>
+              <button type="button" name="button" class="btn btn-danger cancelEdit">Cancel</button>
+            </div>
+            <form method="post" enctype="multipart/form-data" id="delegatePhotoChange" class="hidden"><input type="file" name="changePhoto" value="" id="changePhoto"></form>
+          </div>
+
+          <div class="matrixTabList">
+              <li class="matrixTab" data-tabselect="home"><i class="fas fa-home"></i></li>
+              <li class="matrixTab" data-tabselect="delegates"><i class="fas fa-user-graduate"></i></li>
+              <li class="matrixTab" data-tabselect="invoice"><i class="fa-solid fa-file-lines"></i></li>
+              <li class="matrixTab" data-tabselect="changelog"><i class="fa-solid fa-book"></i></li>
+          </div>
+          <div class="editDetailsButtons">
+
+            <button type="button" name="button" class="saveBookingDetails btn btn-success"> Save Updates</button>
+            <div class="dropDownActionsMatrix">
+              <button type="button" name="button" class="btn btn-primary generatePDFList">Generate <span style="border-left:1px solid lightblue; margin:0 4px; padding-left:4px"><i class="fas fa-chevron-down"></i></span></button>
+              <div class="actionsList hidden">
+                <li class="generateItem letterGenerator">Letterhead</li>
+                <li class="generateItem registerGenerator">Register</li>
+              </div>
+            </div>
+            <button type="button" name="button" class="btn btn-danger cancelBooking">Cancel Booking</button>
+          </div>
+
+            <div class="bookingDetails matrixItem">
+              <div class="" style="width:100%; border-bottom:1px solid white; padding-bottom: 1rem; margin-bottom:1rem">
+                <h5>Booking Information</h5>
+                <h3 class="vortexBookedBy"></h3>
+                <div class="matrixStatusBox" >
+                  <select class="form-select matrixStatusSelect" id="matrixStatusSelect" >
+                    <option value="Confirmed">Confirmed</option>
+                    <option value="Provisional">Provisional</option>
+                    <option value="Outsourced">Outsourced</option>
+                    <option value="Incomplete">Incomplete</option>
+                    <option value="Cancelled" class="hidden">Cancelled</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text matrixInfoCss" id="basic-addon1">Organisation</span>
+                  </div>
+                  <select class="form-select matrixInfoCss" name="" id="orgNameMatrix"></select>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text matrixInfoCss" id="basic-addon1">Booker Name</span>
+                  </div>
+                  <select class="form-select matrixInfoCss" name="" id="bookerNameMatrix"></select>
+                </div>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text matrixInfoCss" id="basic-addon1">Booker Email</span>
+                  </div>
+                  <input type="text" name="" value="" id="bookerEmailMatrix" class="form-control matrixInfoCss">
+                </div>
+                <button type="button" name="button" class="btn btn-primary" onclick="resendConfirmation()"><i class="fa-solid fa-envelope"></i> Resend Booking Confirmation</button>
+
+              </div>
+              <div class="mainDetailsScroll">
+                <table style="width:100%">
+                  <tr>
+                    <td><div class="matrixHeader">Start<div></td>
+                    <td><input type="date" name="" value="" class="form-control" id="matrixStart"></td>
+                    <td><div class="matrixHeader">End<div></td>
+                    <td><input type="date" name="" value="" class="form-control" id="matrixEnd"></td>
+                  </tr>
+                  <tr>
+                    <td><div class="matrixHeader">Duration<div></td>
+                    <td><input type="number" name="" value="" id="matrixDays" class="form-control"></td>
+                    <td><div class="matrixHeader">Session<div></td>
+                    <td><select class="form-control" name="" id=matrixTimeScale>
+                                        <option value="FullDay">Full Day</option>
+                                        <option value="AM">AM</option>
+                                        <option value="PM">PM</option>
+                                      </select></td>
+                  </tr>
+                  <tr>
+                    <td><div class="matrixHeader">Location<div></td>
+                    <td colspan="3"><textarea name="name" rows="2" cols="90" class="form-control" id="matrixLocation"></textarea></td>
+                  </tr>
+                  <tr>
+                    <td ><div class="matrixHeader">Contact<div></td>
+                      <td><input type="text" name="" value="" id="matrixSiteContact" class="form-control"></td>
+                      <td><div class="matrixHeader">Number<div></td>
+                      <td><input type="text" name="" value="" class="form-control" id="matrixContactNumber"></td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">                    <button type="button" name="button" class="btn btn-primary addTrainer"> Add Trainer</button>
+                                        <button type="button" name="button" class="btn btn-danger removeLastTrainer" disabled>Remove Last Trainer</button></td>
+
+                  </tr>
+                  <tr class="trainerDetails">
+                    <td><div class="matrixHeader">Trainer<div></td>
+                    <td><select class="form-select matrixTrainer" name=""></select></td>
+                    <td>
+                      <input type="date" name="" value="" class="form-control matrixTrainerStart">
+                    </td>
+                    <td>
+                      <input type="date" name="" value="" class="form-control matrixTrainerEnd">
+                    </td>
+                  </tr>
+                  <tr>
+                    <td colspan="4">Course Details</td>
+                  </tr>
+                  <tr>
+                    <td ><div class="matrixHeader"><span style="font-size: 12px;">Accredidation</span><div></td>
+                      <td><select class="form-control" name="" id="matrixAwardingBody"></td>
+                      <td><div class="matrixHeader">Type<div></td>
+                      <td><select class="form-control" name="" id="matrixCardSelect"></select></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2" class="nporsNotificationData"><div class="matrixHeader"><span >Notification Type</span><div></td>
+                    <td colspan="2" class="nporsNotificationData">
+                      <select class=" form-select" id="matrixNotificationType" name="">
+                        <option value=""></option>
+                        <option value="Internal">Internal</option>
+                        <option value="External">External</option>
+                      </select>
+                    </td>
+
+                  </tr>
+                </table>
+                <button type="button" name="button" class="btn btn-primary" onClick="matrixAddCourse()">Add Course</button>
+                <table class="courseInner" style="width: 100%; font-size:12px">
+                  <tr>
+                    <th></th>
+                    <th>Course</td>
+                    <th  style="width:30%;" class="testingType">Testing Type</th>
+                    <th style="width:10%;"><strong>Delegates</strong></th>
+                      <th></th>
+                  </tr>
+                </table>
+              </div>
+
+
+
+            </div>
+              <div class="invoiceSection hidden matrixItem">
+                Invoice Details
+                <table>
+                  <tr>
+                    <td><div class="matrixHeader"><span>Day/Candidate Rate</span><div></td>
+                      <td>
+                        <select id="matrixRateType"class="form-select" name="">
+                          <option value="Day Rate">Day Rate</option>
+                          <option value="Candidate Rate">Candidate Rate</option>
+                        </select>
+                      </td>
+                      <td><div class="matrixHeader"><span>PO Number</span><div></td>
+                        <td><input type="text" name="" value="" class="form-control" id="matrixPONumber"></td>
+                  </tr>
+                  <tr>
+                    <td><div class="matrixHeader"><span>Rate</span><div></td>
+                      <td><input type="text" name="" value="" class="form-control" id="matrixRate"></td>
+                      <td><div class="matrixHeader"><span>Accreditation Rate</span><div></td>
+                        <td><input type="text" name="" value="" class="form-control" id="matrixCardRate"></td>
+                  </tr>
+                </table>
+                <div class="outerInvoice">
+                  <div class="invoiceScroll">
+                    <table>
+                      <tr class="tbHead">
+                        <td>Description</td>
+                        <td>Quantity</td>
+                        <td>Unit Price</td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+              <div class="delegateMatrixDetails hidden matrixItem">
+                <button type="button" name="button" class="newCandidate btn btn-info"> New Candidate</button>
+                <div class="delegateOuter">
+                  <div class="delegatesScroll"></div>
+                </div>
+
+              </div>
+              <div class="changeLogMatrix hidden matrixItem">
+                <h5>Change Log</h5>
+                <div class="changeLogScroll">
+                  <table class="changeLogList">
+                    <tr>
+                      <td>Modified Date</td>
+                      <td>Modified By</td>
+                      <td>Modified</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+        </div>
+        <div class="matrixUniversalInformation">
+          <div class="matrixBookingInfo">
+            <div class="">
+              <table class="bookingStages">
+                <tr>
+                  <td>Register</td>
+                  <td>Paperwork</td>
+                  <td>Cards</td>
+                  <td>Certificates</td>
+                  <td>Invoiced</td>
+                  <td>Paid</td>
+                </tr>
+                <tr>
+                  <td><select class="form-control stageSubmission stageRegister" id="stageRegister">
+                    <option value="N/A">N/A</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Recieved">Recieved</option>
+                  </select></td>
+                  <td><select class="form-control stageSubmission stagePaperwork" id="stagePaperwork">
+                    <option value="N/A">N/A</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Recieved">Recieved</option>
+                  </select></td>
+                  <td><select class="form-control stageSubmission stageCards" id="stageCards">
+                    <option value="N/A">N/A</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Requested">Requested</option>
+                    <option value="Recieved">Recieved</option>
+                    <option value="Sent">Sent</option>
+                  </select></td>
+                  <td><select class="form-control stageSubmission stageCertificates" id="stageCertificates">
+                    <option value="N/A">N/A</option>
+                    <option value="Pending">Pending</option>
+                    <option value="Requested">Requested</option>
+                    <option value="Recieved">Recieved</option>
+                    <option value="Sent">Sent</option>
+                  </select></td>
+                  <td>
+                      <input type="text" name="" value="123" class="form-control stageSubmission matrixstageInvNo" placeholder="Inv No. Here" id="stageInvNo">
+                      <input type="Date" name="" value="" class="form-control stageSubmission matrixstageInvDate hidden" id="stageInvDate" style="display:none">
+                    </td>
+                  <td><input type="checkbox" name="" value="false" class="form-check paidCheck" id="matrixPaidCheck">
+                    <input type="Date" name="" value="" class="form-control stageSubmission matrixstagePaidDate hidden" id="stagePaidDate" style="display:none"></td>
+                </tr>
+              </table>
+            </div>
+            <table style="width:100%">
+              <tr>
+                <td><div class="matrixHeader">Batch/Ref Number</div></td>
+                <td><input type="text" name="" value="" class="form-control" id="matrixBatchNumber"></td>
+                <td><div class="matrixHeader">Postal Reference</div></td>
+                <td><input type="text" name="" value="" class="form-control" id="matrixTrackingNumber"></td>
+              </tr>
+            </table>
+          </div>
+          <div class="matrixBookingNotes">
+            <div class="notes">
+              Notes
+              <div class="notesInner">
+              <div class="notesImportant"></div>
+              <div class="notesNormal"></div>
+              </div>
+              <div class="newNote">
+                <div class="input-group">
+                  <input type="text" name="" value="" class="form-control matrixInfoCss" placeholder="Enter New Note Here" id="note">
+                </div>
+                <div class="input-group">
+                  <div class="col-md-4">
+                    <select class="form-control matrixInfoCss" name="" id="noteSeverity">
+                      <option value="Standard">Standard</option>
+                      <option value="Important"> Important</option>
+                    </select>
+                  </div>
+
+                  <div class="input-group-append">
+                    <span class="input-group-text sendNote"><i class="fa-solid fa-paper-plane" style="font-size:1.1rem"></i></span>
+                  </div>
+                  <div class="input-group-append">
+                    <span class="input-group-text clearNote" ><i class="fa-solid fa-xmark" style="font-size:1.1rem"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="matrixDocuments">
+            <div class="matrixDocBody">
+              <div class="matixDocsNav">
+                <div class="">
+                  Folders
+                </div>
+                <div class="matrixDocs">Register</div>
+                <div class="matrixDocs">Frontsheet</div>
+                <div class="matrixDocs">Paperwork</div>
+                <div class="matrixDocs">Cert/Card(s)</div>
+                <div class="matrixDocs">Misc</div>
+              </div>
+              <div class="docsBody">
+                <div class="docsInner">
+                  <table class="docDetails">
+                    <tr>
+                      <td class="docsHeader">File Name</td>
+                      <td class="docsHeader">Date</td>
+                      <td class="docsHeader">Uploaded By</td>
+                      <td class="docsHeader">Approval Status</td>
+                      <td class="extraOptions"></td>
+                    </tr>
+                  </table>
+                  <div class="submittingBorder">
+                    <div class="addNewDoc" data-docupload="Register">
+                      <div class="addNewDocIcon">
+                        <i class="fas fa-plus-circle"></i>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="archiveBoxArea">
+                  <i class="fas fa-archive archiveBoxLogo"></i>
+                </div>
+                <form method="post" enctype="multipart/form-data" id="docsUploadForm" class="hidden"><input type="file" name="documentUpload" value="" id="documentUpload" multiple></form>
+
+              </div>
+            </div>
+            <div class="matrixDocsLoader"><span class="matrixDocsLoadPercentage"></span></div>
+          </div>
+        </div>
+      </div>
+      </div>
+
+      <div class="OverlayThree">
+        <object class="matrixViewer hidden" type="" data=""></object>
+        <div class="hideViewer">
+          <h3>Hide</h3>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- end of diary -->
+
+
+
+
+    <!-- flexbody enD -->
+    <!-- scripts -->
+    <script src="/scripts/script.js" charset="utf-8"></script>
+</body>
+
+</html>

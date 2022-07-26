@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style ="text/css">
+  .headBox{
+    position: relative;
+    width: 100%;
+    background-color: #DEECFC;
+    padding: 0;
+    margin: 0;
+    display: table;
+
+  }
+
+  .innerBox{
+    display: table-row;
+  }
+
+  .vortexLogoTop{
+    background-image: url("https://vortex-dump.s3.eu-west-2.amazonaws.com/fehewb43vhmon5xdf5ndoimage001SREZ+(1).png");
+    background-repeat: no-repeat;
+    background-size: 90px;
+    background-position: -40px -25px;
+    content: '';
+    height: 60px;
+    width: 60px;
+  }
+  .vortexLogoFull{
+    position: absolute;
+    top:10px;
+    right: 0;
+    background-image: url("https://vortex-dump.s3.eu-west-2.amazonaws.com/Vortex+Training.png");
+    background-repeat: no-repeat;
+    background-size: auto 30px;
+    background-position:
+    content: '';
+    height: 60px;
+    width: 120px;
+  }
+
+  .headData{
+    position: absolute;
+    left: 90px;
+    top: 0;
+    font-size: 10px;
+    width: 100%;
+  }
+  .insideBox{
+    float: left;
+  }
+  .divBar{
+    width: 99.4%;
+    height: 16px;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
+    background-color: #87A8D0;
+    padding-top: 5px;
+    padding-left: 5px;
+  }
+  .delegateItem{
+    float: left;
+    height: 100%;
+    width:89.8%
+  }
+  .delegateItem:nth-child(even){
+    background-color: lightGrey;
+    width:89.8%
+  }
+    </style>
+  </head>
+  <body style="font-family: Arial, sans-serif; font-size: 10px">
+  <div class="headBox">
+    <div class="innerBox">
+      <div class="vortexLogoTop"></div>
+      <div class="headData">
+        <div class="insideBox" style="width:15%;margin-top: 10px">
+          Vortex Ref: <%= data.VortexRef %>
+        </div>
+        <div class="insideBox" style="width:20%; margin-right: 10px">
+          <p style="margin:0; margin-top: 10px">Trainer:
+            <% trainerArray = [] %>
+            <% if(data.Bookings[0].TrainerArray != undefined) { %>
+                <% data.Bookings[0].TrainerArray.forEach(function(trainers){ %>
+                    <% trainerArray.push(trainers.Trainer) %>
+                <% }) %>
+<%= trainerArray %>
+            <% } else { %>
+
+              <%= data.Bookings[0].Trainer %>
+            <% }%>
+
+
+          </p>
+        </div>
+        <div class="insideBox" style="width:30%;margin-top: 10px">
+          <p style="margin:0; margin-top:">Start Date: <%= new Date(data.Bookings[0].Start).toLocaleDateString("EN-GB") %> - End Date: <%= new Date(data.Bookings[0].End).toLocaleDateString("EN-GB") %></p>
+        </div>
+      </div>
+      <div class="vortexLogoFull"></div>
+    </div>
+  </div>
+  <div class="divBar">
+    <p style="margin:0">Candidates Details</p>
+  </div>
+  <% data.Bookings.forEach(function(booking){ %>
+    <% booking.Delegates.forEach(function(delegates){ %>
+      <div class="delegateItem" style="padding: 5px 5%;font-size:10px;">
+        <div class="" style="float:left; width: 15%;list-style-type:none">
+          <li> First Name: <%= delegates.FirstName %></li>
+          <li> Surname: <%= delegates.Surname %></li>
+        </div>
+        <div class="" style="float:left; width: 15%;">
+          <% if(new Date(delegates.DateOfBirth).toLocaleDateString("EN-GB") == "Invalid Date") { %>
+            <p>D.O.B: N/A</p>
+          <% } else { %>
+            <p>D.O.B: <%= new Date(delegates.DateOfBirth).toLocaleDateString("EN-GB") %></p>
+          <% }%>
+
+        </div>
+        <div class="" style="float:left; width: 25%;">
+          <% if(delegates.Company == "") {%>
+<p>Company: N/A</p>
+          <%} else {%>
+<p>Company:<%= delegates.Company %> </p>
+            <% } %>
+
+        </div>
+        <div class="" style="float:left; width: 45%;text-align:left;">
+          <table style="width:100%;">
+            <tr>
+              <th style="width: 70%">Course</th>
+              <th style="width: 15%">Date</th>
+              <th style="width: 15%">Results</th>
+            </tr>
+              <% delegates.Course[0].forEach(function(course){ %>
+                <tr>
+                  <td><%= course.Course %></td>
+                  <td><%= new Date(course.Date).toLocaleDateString("EN-GB") %></td>
+                  <td><%= course.PassFail %></td>
+                </tr>
+              <% }) %>
+          </table>
+        </div>
+      </div>
+  <% }) %>
+  <% }) %>
+
+
+  </body>
+</html>
